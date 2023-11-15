@@ -46,6 +46,8 @@ public class playerController : MonoBehaviour
     {
         MoveRight(); 
         MoveLeft();
+        MoveUp();
+        MoveDown();
 
     }
     void MoveRight()
@@ -57,7 +59,7 @@ public class playerController : MonoBehaviour
 
         if (walkRight)
         {
-            rb.velocity = new Vector2(walkSpeed, 0);
+            rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
         }
     }
     void MoveLeft()
@@ -69,7 +71,31 @@ public class playerController : MonoBehaviour
 
         if (walkLeft)
         {
-            rb.velocity = new Vector2(-walkSpeed, 0);
+            rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+        }
+    }
+    void MoveUp()
+    {
+        if (rb.velocity.y > 0.1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - 1f );
+        }
+
+        if (walkUp)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, walkSpeed);
+        }
+    }
+    void MoveDown()
+    {
+        if (rb.velocity.y < -0.1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 1f);
+        }
+
+        if (walkDown)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -walkSpeed);
         }
     }
 
