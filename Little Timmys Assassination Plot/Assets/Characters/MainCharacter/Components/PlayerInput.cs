@@ -69,7 +69,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""65afef36-f97f-4122-aa39-ba5f5412dd6f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press,Press(behavior=1)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -124,7 +124,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

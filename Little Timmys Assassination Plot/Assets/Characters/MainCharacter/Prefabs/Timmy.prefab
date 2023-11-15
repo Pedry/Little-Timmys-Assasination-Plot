@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3742069767819281972}
   - component: {fileID: 3725071251761995302}
   - component: {fileID: -5568613941695638672}
+  - component: {fileID: 5463568531717642223}
   m_Layer: 0
   m_Name: Timmy
   m_TagString: Untagged
@@ -172,3 +173,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5463568531717642223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845481355277682262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708fcdb3da112046bef4436ad139daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
