@@ -32,9 +32,9 @@ public class playerController : MonoBehaviour
         input.Enable();
 
         input.InGame.WalkRight.performed += OnWalkRight;
-        input.InGame.WalkRight.performed += OnWalkLeft;
-        input.InGame.WalkRight.performed += OnWalkUp;
-        input.InGame.WalkRight.performed += OnWalkDown;
+        input.InGame.WalkLeft.performed += OnWalkLeft;
+        input.InGame.WalkUp.performed += OnWalkUp;
+        input.InGame.WalkDown.performed += OnWalkDown;
     }
     private void OnDisable()
     {
@@ -44,15 +44,32 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        MoveRight(); 
+        MoveLeft();
+
+    }
+    void MoveRight()
+    {
         if (rb.velocity.x > 0.1f)
         {
             rb.velocity = new Vector2(rb.velocity.x - 1f, rb.velocity.y);
         }
-        
+
         if (walkRight)
         {
-            rb.velocity = new Vector2 (walkSpeed, 0);
-            
+            rb.velocity = new Vector2(walkSpeed, 0);
+        }
+    }
+    void MoveLeft()
+    {
+        if (rb.velocity.x < -0.1f)
+        {  
+            rb.velocity = new Vector2(rb.velocity.x + 1f, rb.velocity.y);
+        }
+
+        if (walkLeft)
+        {
+            rb.velocity = new Vector2(-walkSpeed, 0);
         }
     }
 
