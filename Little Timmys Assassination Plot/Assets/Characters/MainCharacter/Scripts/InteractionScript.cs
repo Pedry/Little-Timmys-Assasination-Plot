@@ -66,6 +66,8 @@ public class InteractionScript : MonoBehaviour
 
             npcInteraction = other.GetComponent<InteractedScript>();
 
+
+
             interactions.canInteract = true;
 
         }
@@ -89,7 +91,7 @@ public class InteractionScript : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if(interactions.interact)
+        if(interactions.interact && interactions.canInteract)
         {
 
             transform.localScale = new Vector3(1.2f, 1.2f, 1);
