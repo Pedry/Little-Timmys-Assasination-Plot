@@ -48,6 +48,30 @@ public class InteractionScript : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Student"))
+        {
+
+            interactions.canInteract = true;
+
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Student"))
+        {
+
+            interactions.canInteract = false;
+
+        }
+
+    }
+
     private void FixedUpdate()
     {
 
@@ -63,6 +87,8 @@ public class InteractionScript : MonoBehaviour
             transform.localScale = new Vector3(1f, 1, 1);
 
         }
+
+        Debug.Log(interactions.canInteract);
         
     }
 
@@ -71,5 +97,6 @@ class Interactions
 {
 
     public bool interact;
+    public bool canInteract;
 
 }
