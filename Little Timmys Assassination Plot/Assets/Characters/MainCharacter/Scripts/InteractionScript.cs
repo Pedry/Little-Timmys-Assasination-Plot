@@ -10,6 +10,8 @@ public class InteractionScript : MonoBehaviour
 
     Interactions interactions;
 
+    InteractedScript npcInteraction;
+
     private void Awake()
     {
 
@@ -40,6 +42,14 @@ public class InteractionScript : MonoBehaviour
         if(context.ReadValue<float>() == 1)
         {
             interactions.interact = true;
+
+            if(npcInteraction != null)
+            {
+
+                npcInteraction.ChangeColor();
+
+            }
+
         }
         else
         {
@@ -54,6 +64,8 @@ public class InteractionScript : MonoBehaviour
         if (other.CompareTag("Student"))
         {
 
+            npcInteraction = other.GetComponent<InteractedScript>();
+
             interactions.canInteract = true;
 
         }
@@ -65,6 +77,8 @@ public class InteractionScript : MonoBehaviour
 
         if (other.CompareTag("Student"))
         {
+
+            npcInteraction = null;
 
             interactions.canInteract = false;
 
