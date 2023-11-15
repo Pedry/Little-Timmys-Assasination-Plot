@@ -1,0 +1,111 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "InGame",
+            "id": "e603a2c6-c136-4e1e-a466-beea265b82d9",
+            "actions": [
+                {
+                    "name": "WalkRight",
+                    "type": "Button",
+                    "id": "b7b06c20-4d8d-4537-825d-3ae4e6ef341c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WalkLeft",
+                    "type": "Button",
+                    "id": "a3ebb04f-4589-4a05-99fa-24e3b02feeb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WalkUp",
+                    "type": "Button",
+                    "id": "b4624251-f4e5-46d9-b5a1-006ecd23695a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WalkDown",
+                    "type": "Button",
+                    "id": "7943a05c-2519-4c44-a3c1-de1a9997baf6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Press(behavior=1)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f4d1827-447b-41ac-b993-56665be68c0a",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "WalkRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db93c92e-e064-4ae4-8f31-a2dbc5ea9121",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "WalkLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fc547c4-8fe1-4ae4-ac55-a8491cdd8b31",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "WalkUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cca87010-dcf4-4aff-af5a-6430a8bc0711",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "WalkDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyboardMouse",
+            "bindingGroup": "KeyboardMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
