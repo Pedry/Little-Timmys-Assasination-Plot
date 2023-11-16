@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D.Animation;
 
 public class playerController : MonoBehaviour
 {
     //Här deklarerar jag variablar men sätter inget värde på dem. dela upp dem som "hör" ihop! 
     [SerializeField]
     float walkSpeed;
+    [SerializeField]
+    float walkSpeedDiag;
 
     bool walkRight;
     bool walkLeft;
     bool walkUp;
     bool walkDown;
+
+    bool resetAnimation;
+    [SerializeField]
+    GameObject animationEngine;
+
+    [SerializeField]
+    GameObject timmyHimself;
     /* Jag vill använda mig utav andra componenter eller program i unity. 
      * För att scriptet ska kunna förstå det
      * så REFERERAR jag det genom att skriva namnet. OBS: Case Sensitive!
@@ -32,6 +42,9 @@ public class playerController : MonoBehaviour
      */
     Rigidbody2D rb;
 
+    SpriteLibrary spriteLibrary;
+    SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,9 +60,14 @@ public class playerController : MonoBehaviour
         //I våra scopes så börjar vi sätta värde på våra variablar.
         walkRight = false;
 
+        resetAnimation = false;
+
         //Högst upp så REFERERADE vi de komponenter som vi vill kunna använda.
         //Här gör vi så att vi faktiskt kan använda dem!
         rb = GetComponent<Rigidbody2D>();
+
+        spriteLibrary = GetComponent<SpriteLibrary>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         //Här skriver vi namnet vi gav till referensen och skriver "new PlayerInput();"
         //Anledningen till att vi skriver det är så att vi kan ändra på PlayerInput scriptet 
@@ -105,17 +123,38 @@ public class playerController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+
+        UpdateSprite();
+
+    }
+
     //Funktionen för att flytta oss i höger riktning.
     void MoveRight()
     {
         if (rb.velocity.x > 0.1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x - 1f, rb.velocity.y);
+
+            rb.velocity = new Vector2(rb.velocity.x - 20f, rb.velocity.y);
+
         }
 
         if (walkRight)
         {
-            rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+
+            if(walkUp || walkDown)
+            {
+
+                rb.velocity = new Vector2(walkSpeedDiag, rb.velocity.y);
+
+            }
+            else
+            {
+
+                rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+
+            }
         }
     }
 
@@ -124,12 +163,23 @@ public class playerController : MonoBehaviour
     {
         if (rb.velocity.x < -0.1f)
         {  
-            rb.velocity = new Vector2(rb.velocity.x + 1f, rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x + 20f, rb.velocity.y);
         }
 
         if (walkLeft)
         {
-            rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+            if(walkUp || walkDown)
+            {
+
+                rb.velocity = new Vector2(-walkSpeedDiag, rb.velocity.y);
+
+            }
+            else
+            {
+
+                rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+
+            }
         }
     }
 
@@ -138,12 +188,24 @@ public class playerController : MonoBehaviour
     {
         if (rb.velocity.y > 0.1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - 1f );
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - 20f);
         }
 
         if (walkUp)
         {
-            rb.velocity = new Vector2(rb.velocity.x, walkSpeed);
+
+            if(walkLeft || walkRight)
+            {
+
+                rb.velocity = new Vector2(rb.velocity.x, walkSpeedDiag);
+
+            }
+            else
+            {
+
+                rb.velocity = new Vector2(rb.velocity.x, walkSpeed);
+
+            }
         }
     }
 
@@ -152,12 +214,24 @@ public class playerController : MonoBehaviour
     {
         if (rb.velocity.y < -0.1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 1f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 20f);
         }
 
         if (walkDown)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -walkSpeed);
+
+            if (walkLeft || walkRight)
+            {
+
+                rb.velocity = new Vector2(rb.velocity.x, -walkSpeedDiag);
+
+            }
+            else
+            {
+
+                rb.velocity = new Vector2(rb.velocity.x, -walkSpeed);
+
+            }
         }
     }
 
@@ -166,6 +240,10 @@ public class playerController : MonoBehaviour
         if (context.ReadValue<float>() == 1)
         {
             walkRight = true;
+            resetAnimation = true;
+
+            timmyHimself.transform.localScale = new Vector3(- Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
         }
         if (context.ReadValue<float>() == 0)
         {
@@ -178,6 +256,8 @@ public class playerController : MonoBehaviour
         if (context.ReadValue<float>() == 1)
         {
             walkLeft = true;
+            resetAnimation = true;
+            timmyHimself.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         if (context.ReadValue<float>() == 0)
         {
@@ -189,6 +269,7 @@ public class playerController : MonoBehaviour
         if (context.ReadValue<float>() == 1)
         {
             walkUp = true;
+            resetAnimation = true;
         }
         if (context.ReadValue<float>() == 0)
         {
@@ -200,10 +281,111 @@ public class playerController : MonoBehaviour
         if (context.ReadValue<float>() == 1)
         {
             walkDown = true;
+            resetAnimation = true;
+
         }
         if (context.ReadValue<float>() == 0)
         {
             walkDown = false;
+        }
+    }
+
+    string lastCategory = "Down";
+    int lastFrameOffset = 0;
+    void UpdateSprite()
+    {
+        string label = "timothy-animated-sprite_";
+
+        spriteRenderer.sprite = spriteLibrary.GetSprite(lastCategory, label + lastFrameOffset);
+
+        if (resetAnimation)
+        {
+
+            animationEngine.GetComponent<AnimationEngineScript>().ResetTimmyAnimation();
+            resetAnimation = false;
+
+        }
+
+        if (walkUp && walkLeft)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
+            lastCategory = "UpDiag";
+            lastFrameOffset = 16;
+            return;
+
+        }
+
+        if(walkDown && walkLeft)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
+            lastCategory = "DownDiag";
+            lastFrameOffset = 12;
+            return;
+
+        }
+
+        if(walkUp && walkRight)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
+            lastCategory = "UpDiag";
+            lastFrameOffset = 16;
+            return;
+
+        }
+
+        if(walkDown && walkRight)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
+            lastCategory = "DownDiag";
+            lastFrameOffset = 12;
+            return;
+
+        }
+
+        if (walkLeft)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
+            lastCategory = "Horizontal";
+            lastFrameOffset = 4;
+            return;
+
+        }
+
+        if(walkUp)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Up", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 8));
+            lastCategory = "Up";
+            lastFrameOffset = 8;
+            return;
+
+        }
+
+        if (walkDown)
+        {
+
+            Debug.Log(animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame);
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Down", label + animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame);
+            lastCategory = "Down";
+            lastFrameOffset = 0;
+            return;
+
+        }
+
+        if (walkRight)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
+            lastCategory = "Horizontal";
+            lastFrameOffset = 4;
+            return;
+
         }
     }
 

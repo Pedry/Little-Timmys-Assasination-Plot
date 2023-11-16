@@ -135,7 +135,7 @@ public class Information
 
 }
 
-class Relation
+struct Relation
 {
 
     public string lastSeen;

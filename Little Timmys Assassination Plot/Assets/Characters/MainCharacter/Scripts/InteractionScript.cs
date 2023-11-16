@@ -146,24 +146,6 @@ public class InteractionScript : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-
-        if(interactions.interact && interactions.canInteract)
-        {
-
-            transform.localScale = new Vector3(1.2f, 1.2f, 1);
-
-        }
-        else
-        {
-
-            transform.localScale = new Vector3(1f, 1, 1);
-
-        }
-        
-    }
-
 }
 class Interactions
 {
