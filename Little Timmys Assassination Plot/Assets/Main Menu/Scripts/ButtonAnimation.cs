@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -29,28 +30,6 @@ public class ButtonAnimation : Button
     void Update()
     {
 
-        switch (state)
-        {
-            case State.Idle:
-                image.sprite = spriteLibrary.GetSprite("Menu Button", state.ToString());
-                break;
-            case State.Hover:
-                image.sprite = spriteLibrary.GetSprite("Menu Button", state.ToString());
-                break;
-            case State.Click:
-
-                break;
-        }
-
-    }
-    public void MouseEnter()
-    {
-        state = State.Hover;
-    }
-
-    public void MouseExit()
-    {
-        state = State.Idle;
     }
 
     
