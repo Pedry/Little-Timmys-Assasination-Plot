@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
+    //Här deklarerar jag variablar men sätter inget värde på dem. dela upp dem som "hör" ihop! 
     [SerializeField]
     float walkSpeed;
 
@@ -12,8 +13,23 @@ public class playerController : MonoBehaviour
     bool walkLeft;
     bool walkUp;
     bool walkDown;
-
+    /* Jag vill använda mig utav andra componenter eller program i unity. 
+     * För att scriptet ska kunna förstå det
+     * så REFERERAR jag det genom att skriva namnet. OBS: Case Sensitive!
+     * 
+     * VIKTIGT!När vi refererat något betyder inte det att vi kan använda det än.
+     * Vi har bara gjort att programmet vet om att det finns. Resten gör vi senare!
+     */
+    
+     
+     
+    // "PlayerInput" är namnet på mitt "Input System" som jag installerade i Packet Managern.
     PlayerInput input;
+
+
+    /* "Rigidbodyy2D" är namnet på komponenten i unity som jag vill kunna komma åt och använda.
+     * Alla gameObject som jag sätter detta hela scriptet på måste ha en Rigidbody2D.
+     */
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -21,16 +37,31 @@ public class playerController : MonoBehaviour
     {
         
     }
+
+    /*
+     *  Awake is called when the script object is initialised, 
+     *  regardless of whether or not the script is enabled.
+     */
     private void Awake()
     {
+        //I våra scopes så börjar vi sätta värde på våra variablar.
         walkRight = false;
+
+        //Högst upp så REFERERADE vi de komponenter som vi vill kunna använda.
+        //Här gör vi så att vi faktiskt kan använda dem!
         rb = GetComponent<Rigidbody2D>();
+
+        //Här skriver vi namnet vi gav till referensen och skriver "new PlayerInput();"
+        //Anledningen till att vi skriver det är så att vi kan ändra på PlayerInput scriptet 
+        //Utan att behöva gå in i det. Vi kan nu göra alla ändringar här direkt och våra ändringar 
+        //Kommer även ändras i PlayerInput Scriptet också! På detta sättet behöver vi aldrig ens gå in i det andra scriptet. Vi kan hålla oss här!
         input = new PlayerInput();
     }
     private void OnEnable()
     {
+        
         input.Enable();
-
+        //+= betyder att vi lägger till allt på höger sida på vänster sida.
         input.InGame.WalkRight.performed += OnWalkRight;
         input.InGame.WalkLeft.performed += OnWalkLeft;
         input.InGame.WalkUp.performed += OnWalkUp;
@@ -50,6 +81,8 @@ public class playerController : MonoBehaviour
         MoveDown();
 
     }
+
+    //Funktionen för att flytta oss i höger riktning.
     void MoveRight()
     {
         if (rb.velocity.x > 0.1f)
@@ -62,6 +95,8 @@ public class playerController : MonoBehaviour
             rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
         }
     }
+
+    //Funktionen för att flytta oss i vänster riktning.
     void MoveLeft()
     {
         if (rb.velocity.x < -0.1f)
@@ -74,6 +109,8 @@ public class playerController : MonoBehaviour
             rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
         }
     }
+
+    //Funktionen för att flytta oss i uppåt riktning.
     void MoveUp()
     {
         if (rb.velocity.y > 0.1f)
@@ -86,6 +123,8 @@ public class playerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, walkSpeed);
         }
     }
+
+    //Funktionen för att flytta oss i neråt riktning.
     void MoveDown()
     {
         if (rb.velocity.y < -0.1f)

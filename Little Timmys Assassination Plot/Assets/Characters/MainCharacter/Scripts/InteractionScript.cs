@@ -14,19 +14,19 @@ public class InteractionScript : MonoBehaviour
 
     private void Awake()
     {
-
+    
         interactions = new Interactions();
         input = new PlayerInput();
-        
+    
     }
 
     private void OnEnable()
     {
-        
+          
         input.Enable();
 
         input.InGame.Interact.performed += OnInteract;
-
+        
     }
 
     private void OnDisable()
