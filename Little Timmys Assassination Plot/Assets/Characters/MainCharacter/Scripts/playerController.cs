@@ -67,6 +67,26 @@ public class playerController : MonoBehaviour
         input.InGame.WalkUp.performed += OnWalkUp;
         input.InGame.WalkDown.performed += OnWalkDown;
     }
+
+    public void DisableMovement()
+    {
+
+        input.InGame.WalkDown.Disable();
+        input.InGame.WalkLeft.Disable();
+        input.InGame.WalkUp.Disable();
+        input.InGame.WalkRight.Disable();
+
+    }
+
+    public void EnableMovement()
+    {
+
+        input.InGame.WalkDown.Enable();
+        input.InGame.WalkLeft.Enable();
+        input.InGame.WalkUp.Enable();
+        input.InGame.WalkRight.Enable();
+
+    }
     private void OnDisable()
     {
         input.Disable();

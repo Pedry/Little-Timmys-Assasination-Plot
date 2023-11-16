@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d708fcdb3da112046bef4436ad139daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: -3742069767819281972}
   inputField: {fileID: 0}
 --- !u!1 &3808254040873293896
 GameObject:

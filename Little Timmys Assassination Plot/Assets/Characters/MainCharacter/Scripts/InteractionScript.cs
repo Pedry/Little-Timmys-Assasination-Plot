@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class InteractionScript : MonoBehaviour
 {
 
+    [SerializeField]
+    playerController playerController;
+
     PlayerInput input;
 
     Interactions interactions;
@@ -58,6 +61,7 @@ public class InteractionScript : MonoBehaviour
                 inputField.SetActive(true);
 
                 input.InGame.Complete.performed += ExitInputField;
+
                 input.InGame.Complete.Enable();
 
                 EnterInputField();
@@ -77,6 +81,8 @@ public class InteractionScript : MonoBehaviour
 
         inputField.SetActive(true) ;
 
+        playerController.DisableMovement();
+
     }
 
     void ExitInputField(InputAction.CallbackContext context)
@@ -90,12 +96,14 @@ public class InteractionScript : MonoBehaviour
 
             npcInteraction.AskedAbout(inputField.GetComponent<TMP_InputField>().text);
 
-            inputField.GetComponent<InputField>().text = "";
+            inputField.GetComponent<TMP_InputField>().text = "";
 
             inputField.SetActive(false);
 
             input.InGame.Complete.performed -= ExitInputField;
             input.InGame.Complete.Disable();
+
+            playerController.EnableMovement();
 
         }
 
