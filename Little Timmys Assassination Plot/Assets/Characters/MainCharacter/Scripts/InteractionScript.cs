@@ -58,6 +58,7 @@ public class InteractionScript : MonoBehaviour
                 inputField.SetActive(true);
 
                 input.InGame.Complete.performed += ExitInputField;
+                input.InGame.Complete.Enable();
 
                 EnterInputField();
 
@@ -94,6 +95,7 @@ public class InteractionScript : MonoBehaviour
             inputField.SetActive(false);
 
             input.InGame.Complete.performed -= ExitInputField;
+            input.InGame.Complete.Disable();
 
         }
 
