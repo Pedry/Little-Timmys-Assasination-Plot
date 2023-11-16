@@ -38,6 +38,14 @@ public class InteractedScript : MonoBehaviour
         spriteRenderer.color = new Color(Mathf.Clamp01(spriteRenderer.color.r + Random.Range(-0.2f, 0.2f)), Mathf.Clamp01(spriteRenderer.color.g + Random.Range(-0.2f, 0.2f)), Mathf.Clamp01(spriteRenderer.color.b + Random.Range(-0.2f, 0.2f)), 1);
 
     }
+
+    public void AskedAbout(string name)
+    {
+
+        GetComponent<StudentData>().AskedAbout(name);
+
+    }
+
 }
 
 class NpcInteractions

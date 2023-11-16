@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press,Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Complete"",
+                    ""type"": ""Button"",
+                    ""id"": ""dca32f94-ba9d-402f-88b6-e74d8efae324"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press,Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -128,6 +137,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5227780b-5bca-4067-9e75-eb926680a58e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Complete"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -158,6 +178,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_WalkUp = m_InGame.FindAction("WalkUp", throwIfNotFound: true);
         m_InGame_WalkDown = m_InGame.FindAction("WalkDown", throwIfNotFound: true);
         m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
+        m_InGame_Complete = m_InGame.FindAction("Complete", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +245,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_WalkUp;
     private readonly InputAction m_InGame_WalkDown;
     private readonly InputAction m_InGame_Interact;
+    private readonly InputAction m_InGame_Complete;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -233,6 +255,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @WalkUp => m_Wrapper.m_InGame_WalkUp;
         public InputAction @WalkDown => m_Wrapper.m_InGame_WalkDown;
         public InputAction @Interact => m_Wrapper.m_InGame_Interact;
+        public InputAction @Complete => m_Wrapper.m_InGame_Complete;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -257,6 +280,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Complete.started += instance.OnComplete;
+            @Complete.performed += instance.OnComplete;
+            @Complete.canceled += instance.OnComplete;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -276,6 +302,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Complete.started -= instance.OnComplete;
+            @Complete.performed -= instance.OnComplete;
+            @Complete.canceled -= instance.OnComplete;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -309,5 +338,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnWalkUp(InputAction.CallbackContext context);
         void OnWalkDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnComplete(InputAction.CallbackContext context);
     }
 }

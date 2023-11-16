@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "Press,Press(behavior=1)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Complete",
+                    "type": "Button",
+                    "id": "dca32f94-ba9d-402f-88b6-e74d8efae324",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Press(behavior=1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -104,6 +113,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5227780b-5bca-4067-9e75-eb926680a58e",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Complete",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

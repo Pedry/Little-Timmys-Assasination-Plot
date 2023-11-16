@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InteractionScript : MonoBehaviour
 {
@@ -12,11 +14,16 @@ public class InteractionScript : MonoBehaviour
 
     InteractedScript npcInteraction;
 
+    [SerializeField]
+    GameObject inputField;
+
     private void Awake()
     {
     
         interactions = new Interactions();
         input = new PlayerInput();
+
+        inputField.SetActive(false);
     
     }
 
@@ -48,12 +55,46 @@ public class InteractionScript : MonoBehaviour
 
                 npcInteraction.ChangeColor();
 
+                inputField.SetActive(true);
+
+                input.InGame.Complete.performed += ExitInputField;
+
+                EnterInputField();
+
             }
 
         }
         else
         {
             interactions.interact = false;
+        }
+
+    }
+
+    void EnterInputField()
+    {
+
+        inputField.SetActive(true) ;
+
+    }
+
+    void ExitInputField(InputAction.CallbackContext context)
+    {
+
+        if(context.ReadValue<float>() == 1)
+        {
+
+            Debug.Log(npcInteraction);
+            Debug.Log(inputField);
+
+            npcInteraction.AskedAbout(inputField.GetComponent<TMP_InputField>().text);
+
+            inputField.GetComponent<InputField>().text = "";
+
+            inputField.SetActive(false);
+
+            input.InGame.Complete.performed -= ExitInputField;
+
         }
 
     }
@@ -103,8 +144,6 @@ public class InteractionScript : MonoBehaviour
             transform.localScale = new Vector3(1f, 1, 1);
 
         }
-
-        Debug.Log(interactions.canInteract);
         
     }
 

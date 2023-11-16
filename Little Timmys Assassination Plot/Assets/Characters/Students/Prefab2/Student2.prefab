@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1976004375171451203}
   - component: {fileID: -3377568667599032424}
   - component: {fileID: -271128245950068844}
+  - component: {fileID: 7410087333390955972}
   m_Layer: 0
   m_Name: Student2
   m_TagString: Student
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7924528, g: 0.37753648, b: 0.61051244, a: 1}
+  m_Color: {r: 0.5566038, g: 0.028880388, b: 0.32759172, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -171,3 +172,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7410087333390955972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608593312370731205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59954db120546498deeb9ab398a5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCharacter: {fileID: 2845481355277682262, guid: 67fc4107b48eb0441835d2ea13ca4956, type: 3}
+  information:
+    gender: 0
+    name: Curt
