@@ -39,6 +39,13 @@ public class InteractedScript : MonoBehaviour
 
     }
 
+    public void SetOutputField(GameObject outputField)
+    {
+
+        GetComponent<StudentData>().SetOutputField(outputField);
+
+    }
+
     public void AskedAbout(string name)
     {
 

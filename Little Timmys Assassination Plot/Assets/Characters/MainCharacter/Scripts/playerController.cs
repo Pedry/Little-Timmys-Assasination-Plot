@@ -56,6 +56,9 @@ public class playerController : MonoBehaviour
         //Utan att behöva gå in i det. Vi kan nu göra alla ändringar här direkt och våra ändringar 
         //Kommer även ändras i PlayerInput Scriptet också! På detta sättet behöver vi aldrig ens gå in i det andra scriptet. Vi kan hålla oss här!
         input = new PlayerInput();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     private void OnEnable()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StudentData : MonoBehaviour
@@ -11,6 +12,8 @@ public class StudentData : MonoBehaviour
 
     [SerializeField]
     public Information information;
+
+    GameObject outputField;
 
     Dictionary<GameObject, Relation> acquaintances;
 
@@ -25,6 +28,13 @@ public class StudentData : MonoBehaviour
     {
 
         
+    }
+
+    public void SetOutputField(GameObject outputField)
+    {
+
+        this.outputField = outputField;
+
     }
 
     public void AskedAbout(string name)
@@ -88,7 +98,7 @@ public class StudentData : MonoBehaviour
                 }
 
                 output = "\n" + ownerName + ": " + Message;
-                Debug.Log(output);
+                outputField.GetComponent<TextMeshProUGUI>().SetText(output);
 
             }
 
@@ -97,7 +107,7 @@ public class StudentData : MonoBehaviour
         if(hasNoInformation)
         {
 
-            Debug.Log(information.name + ": I don't know that person..");
+            outputField.GetComponent<TextMeshProUGUI>().SetText(information.name + ": I don't know that person..");
 
         }
 

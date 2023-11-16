@@ -20,6 +20,9 @@ public class InteractionScript : MonoBehaviour
     [SerializeField]
     GameObject inputField;
 
+    [SerializeField]
+    GameObject outputField;
+
     private void Awake()
     {
     
@@ -58,8 +61,6 @@ public class InteractionScript : MonoBehaviour
 
                 npcInteraction.ChangeColor();
 
-                inputField.SetActive(true);
-
                 input.InGame.Complete.performed += ExitInputField;
 
                 input.InGame.Complete.Enable();
@@ -79,7 +80,12 @@ public class InteractionScript : MonoBehaviour
     void EnterInputField()
     {
 
-        inputField.SetActive(true) ;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        inputField.SetActive(true);
+
+        inputField.GetComponent<TMP_InputField>().ActivateInputField();
 
         playerController.DisableMovement();
 
@@ -91,9 +97,7 @@ public class InteractionScript : MonoBehaviour
         if(context.ReadValue<float>() == 1)
         {
 
-            Debug.Log(npcInteraction);
-            Debug.Log(inputField);
-
+            npcInteraction.SetOutputField(outputField);
             npcInteraction.AskedAbout(inputField.GetComponent<TMP_InputField>().text);
 
             inputField.GetComponent<TMP_InputField>().text = "";
@@ -104,6 +108,9 @@ public class InteractionScript : MonoBehaviour
             input.InGame.Complete.Disable();
 
             playerController.EnableMovement();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
         }
 
