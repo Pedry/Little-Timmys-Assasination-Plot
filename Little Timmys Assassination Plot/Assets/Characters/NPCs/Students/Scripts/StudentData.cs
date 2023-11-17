@@ -126,6 +126,7 @@ public class StudentData : MonoBehaviour, ISavable
 
             File.Create(Application.persistentDataPath + "/StudentData");
 
+
         }
         
         if (File.Exists(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json"))
