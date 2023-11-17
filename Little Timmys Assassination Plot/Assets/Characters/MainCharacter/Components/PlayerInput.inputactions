@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "Press,Press(behavior=1)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "QuitGame",
+                    "type": "Button",
+                    "id": "9cdcb3b5-b8f6-4c25-918f-7908c7cd4a71",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -126,6 +135,39 @@
                     "action": "Complete",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "CtrlQ",
+                    "id": "a86aefa8-075e-41b1-9626-8e7f7c9eca02",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitGame",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ab377428-de66-4025-859e-9bb98c55d86d",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "QuitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "3bfd76bb-5a11-463b-9dbf-7d1d586306aa",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "QuitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

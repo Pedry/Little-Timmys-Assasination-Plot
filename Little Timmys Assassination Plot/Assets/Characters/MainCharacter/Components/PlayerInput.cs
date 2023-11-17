@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press,Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuitGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""9cdcb3b5-b8f6-4c25-918f-7908c7cd4a71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +157,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Complete"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""CtrlQ"",
+                    ""id"": ""a86aefa8-075e-41b1-9626-8e7f7c9eca02"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""ab377428-de66-4025-859e-9bb98c55d86d"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""3bfd76bb-5a11-463b-9dbf-7d1d586306aa"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -179,6 +221,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_WalkDown = m_InGame.FindAction("WalkDown", throwIfNotFound: true);
         m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
         m_InGame_Complete = m_InGame.FindAction("Complete", throwIfNotFound: true);
+        m_InGame_QuitGame = m_InGame.FindAction("QuitGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +289,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_WalkDown;
     private readonly InputAction m_InGame_Interact;
     private readonly InputAction m_InGame_Complete;
+    private readonly InputAction m_InGame_QuitGame;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -256,6 +300,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @WalkDown => m_Wrapper.m_InGame_WalkDown;
         public InputAction @Interact => m_Wrapper.m_InGame_Interact;
         public InputAction @Complete => m_Wrapper.m_InGame_Complete;
+        public InputAction @QuitGame => m_Wrapper.m_InGame_QuitGame;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +328,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Complete.started += instance.OnComplete;
             @Complete.performed += instance.OnComplete;
             @Complete.canceled += instance.OnComplete;
+            @QuitGame.started += instance.OnQuitGame;
+            @QuitGame.performed += instance.OnQuitGame;
+            @QuitGame.canceled += instance.OnQuitGame;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -305,6 +353,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Complete.started -= instance.OnComplete;
             @Complete.performed -= instance.OnComplete;
             @Complete.canceled -= instance.OnComplete;
+            @QuitGame.started -= instance.OnQuitGame;
+            @QuitGame.performed -= instance.OnQuitGame;
+            @QuitGame.canceled -= instance.OnQuitGame;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -339,5 +390,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnWalkDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnComplete(InputAction.CallbackContext context);
+        void OnQuitGame(InputAction.CallbackContext context);
     }
 }

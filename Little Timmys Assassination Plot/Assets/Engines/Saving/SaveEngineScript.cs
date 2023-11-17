@@ -10,6 +10,9 @@ public class SaveEngineScript : MonoBehaviour
     
     private List<GameObject> allObjects;
 
+    [SerializeField]
+    List<GameObject> savableObjects;
+
     private void OnApplicationQuit()
     {
         
@@ -20,9 +23,6 @@ public class SaveEngineScript : MonoBehaviour
     private void SaveData()
     {
 
-        List<GameObject> savableObjects;
-        savableObjects = new List<GameObject>();
-        
         allObjects = FindObjectsOfType<GameObject>().ToList();
 
         foreach (GameObject instance in allObjects)
@@ -34,21 +34,15 @@ public class SaveEngineScript : MonoBehaviour
                 savableObjects.Add(instance);
 
             }
-            
+
         }
 
         int i = 1;
-        
+
         foreach (GameObject instance in savableObjects)
         {
 
-            string data = JsonUtility.ToJson(instance);
-            
-            File.WriteAllText(Application.persistentDataPath + "/MassSave/A" + i, data);
-            
-            Debug.Log("Object Saved!");
-
-            i++;
+            instance.GetComponent<ISavable>().SaveData();
 
         }
 

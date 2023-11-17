@@ -8,16 +8,16 @@ public class playerController : MonoBehaviour
 {
     //Här deklarerar jag variablar men sätter inget värde på dem. dela upp dem som "hör" ihop! 
     [SerializeField]
-    float walkSpeed;
+    public float walkSpeed;
     [SerializeField]
-    float walkSpeedDiag;
+    public float walkSpeedDiag;
 
-    bool walkRight;
-    bool walkLeft;
-    bool walkUp;
-    bool walkDown;
+    public bool walkRight;
+    public bool walkLeft;
+    public bool walkUp;
+    public bool walkDown;
 
-    bool resetAnimation;
+    public bool resetAnimation;
     [SerializeField]
     GameObject animationEngine;
     /* Jag vill använda mig utav andra componenter eller program i unity. 
@@ -84,6 +84,14 @@ public class playerController : MonoBehaviour
         input.InGame.WalkLeft.performed += OnWalkLeft;
         input.InGame.WalkUp.performed += OnWalkUp;
         input.InGame.WalkDown.performed += OnWalkDown;
+        input.InGame.QuitGame.performed += QuitGame;
+    }
+
+    void QuitGame(InputAction.CallbackContext context)
+    {
+        
+        Application.Quit();
+        
     }
 
     public void DisableMovement()
