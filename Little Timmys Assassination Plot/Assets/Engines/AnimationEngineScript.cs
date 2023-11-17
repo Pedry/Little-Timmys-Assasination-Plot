@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,9 @@ public class AnimationEngineScript : MonoBehaviour
     [SerializeField]
     float worldAnimationTimeCap;
 
+    int fps = 0;
+    float fpsTime;
+
     void Awake()
     {
         
@@ -40,10 +44,21 @@ public class AnimationEngineScript : MonoBehaviour
 
         UpdateAnimations();
 
+        fps++;
+
     }
 
     void Timers()
     {
+
+        fpsTime += Time.deltaTime;
+
+        if(fpsTime > 1)
+        {
+            fpsTime = 0;
+            Debug.Log(fps);
+            fps = 0;
+        }
 
         timmyAnimationTime += Time.deltaTime;
         studentAnimationTime += Time.deltaTime;

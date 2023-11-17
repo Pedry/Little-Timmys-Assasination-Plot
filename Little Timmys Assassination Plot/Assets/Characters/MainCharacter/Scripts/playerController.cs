@@ -20,9 +20,6 @@ public class playerController : MonoBehaviour
     bool resetAnimation;
     [SerializeField]
     GameObject animationEngine;
-
-    [SerializeField]
-    GameObject timmyHimself;
     /* Jag vill använda mig utav andra componenter eller program i unity. 
      * För att scriptet ska kunna förstå det
      * så REFERERAR jag det genom att skriva namnet. OBS: Case Sensitive!
@@ -242,7 +239,7 @@ public class playerController : MonoBehaviour
             walkRight = true;
             resetAnimation = true;
 
-            timmyHimself.transform.localScale = new Vector3(- Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(- Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
         }
         if (context.ReadValue<float>() == 0)
@@ -257,7 +254,7 @@ public class playerController : MonoBehaviour
         {
             walkLeft = true;
             resetAnimation = true;
-            timmyHimself.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         if (context.ReadValue<float>() == 0)
         {
@@ -294,7 +291,7 @@ public class playerController : MonoBehaviour
     int lastFrameOffset = 0;
     void UpdateSprite()
     {
-        string label = "timothy-animated-sprite_";
+        string label = "timothy-animated-sprite 1_";
 
         spriteRenderer.sprite = spriteLibrary.GetSprite(lastCategory, label + lastFrameOffset);
 

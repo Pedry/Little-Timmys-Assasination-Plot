@@ -97,6 +97,8 @@ public class StudentData : MonoBehaviour
                         break;
                 }
 
+                
+
                 output = "\n" + ownerName + ": " + Message;
                 outputField.GetComponent<TextMeshProUGUI>().SetText(output);
 

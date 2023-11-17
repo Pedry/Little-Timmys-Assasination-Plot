@@ -17,132 +17,132 @@ MonoBehaviour:
     m_Hash: 370199250
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: timothy-animated-sprite_8
-      m_Hash: 936475877
-      m_Sprite: {fileID: 1487216684, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+    - m_Name: timothy-animated-sprite 1_8
+      m_Hash: 315567568
+      m_Sprite: {fileID: -2078428616, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1487216684, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_9
-      m_Hash: 14044275
-      m_Sprite: {fileID: -2079525838, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -2078428616, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_9
+      m_Hash: 633871686
+      m_Sprite: {fileID: 1217876734, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -2079525838, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_10
-      m_Hash: 890151907
-      m_Sprite: {fileID: -1180241818, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 1217876734, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_10
+      m_Hash: 601389457
+      m_Sprite: {fileID: 2078308727, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1180241818, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_11
-      m_Hash: 34182005
-      m_Sprite: {fileID: 1188755957, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 2078308727, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_11
+      m_Hash: 350177543
+      m_Sprite: {fileID: -151255169, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1188755957, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -151255169, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   - m_Name: Down
     m_Hash: 1020083973
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: timothy-animated-sprite_0
-      m_Hash: 957019351
-      m_Sprite: {fileID: 1282100527, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+    - m_Name: timothy-animated-sprite 1_0
+      m_Hash: 471115234
+      m_Sprite: {fileID: -955432434, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1282100527, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_1
-      m_Hash: 235783233
-      m_Sprite: {fileID: -130020826, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -955432434, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_1
+      m_Hash: 722703732
+      m_Sprite: {fileID: 787213031, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -130020826, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_2
-      m_Hash: 386176507
-      m_Sprite: {fileID: 1113184990, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 787213031, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_2
+      m_Hash: 840615118
+      m_Sprite: {fileID: -970569964, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1113184990, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_3
-      m_Hash: 537109869
-      m_Sprite: {fileID: 2053991251, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -970569964, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_3
+      m_Hash: 85849176
+      m_Sprite: {fileID: -1032577065, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 2053991251, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -1032577065, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   - m_Name: Horizontal
     m_Hash: 475924382
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: timothy-animated-sprite_4
-      m_Hash: 1046950094
-      m_Sprite: {fileID: 1451034455, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+    - m_Name: timothy-animated-sprite 1_4
+      m_Hash: 460939771
+      m_Sprite: {fileID: -1335039025, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1451034455, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_5
-      m_Hash: 157286488
-      m_Sprite: {fileID: 1509309466, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -1335039025, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_5
+      m_Hash: 746475885
+      m_Sprite: {fileID: 358803673, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1509309466, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_6
-      m_Hash: 275337698
-      m_Sprite: {fileID: -792055371, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 358803673, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_6
+      m_Hash: 896991447
+      m_Sprite: {fileID: 1527542551, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -792055371, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_7
-      m_Hash: 661545332
-      m_Sprite: {fileID: 1859330014, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 1527542551, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_7
+      m_Hash: 40906817
+      m_Sprite: {fileID: 468173160, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1859330014, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 468173160, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   - m_Name: UpDiag
     m_Hash: 672352752
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: timothy-animated-sprite_16
-      m_Hash: 476907222
-      m_Sprite: {fileID: -674621142, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+    - m_Name: timothy-animated-sprite 1_16
+      m_Hash: 180083876
+      m_Sprite: {fileID: 828879799, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -674621142, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_17
-      m_Hash: 728380992
-      m_Sprite: {fileID: 970641928, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 828879799, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_17
+      m_Hash: 1035791410
+      m_Sprite: {fileID: 2135596285, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 970641928, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_18
-      m_Hash: 1003826129
-      m_Sprite: {fileID: 918965829, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 2135596285, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_18
+      m_Hash: 755233187
+      m_Sprite: {fileID: 1244648345, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 918965829, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_19
-      m_Hash: 215096135
-      m_Sprite: {fileID: 266590657, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 1244648345, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_19
+      m_Hash: 436519221
+      m_Sprite: {fileID: -1773180729, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 266590657, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -1773180729, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   - m_Name: DownDiag
     m_Hash: 963529471
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: timothy-animated-sprite_12
-      m_Hash: 453034703
-      m_Sprite: {fileID: 458426706, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+    - m_Name: timothy-animated-sprite 1_12
+      m_Hash: 232134845
+      m_Sprite: {fileID: -558960118, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 458426706, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_13
-      m_Hash: 738718297
-      m_Sprite: {fileID: -975498057, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -558960118, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_13
+      m_Hash: 986785835
+      m_Sprite: {fileID: -280594017, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -975498057, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_14
-      m_Hash: 845375482
-      m_Sprite: {fileID: -1652071446, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: -280594017, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_14
+      m_Hash: 615890312
+      m_Sprite: {fileID: 1052436668, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1652071446, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
-    - m_Name: timothy-animated-sprite_15
-      m_Hash: 90462060
-      m_Sprite: {fileID: 798059140, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 1052436668, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
+    - m_Name: timothy-animated-sprite 1_15
+      m_Hash: 330468638
+      m_Sprite: {fileID: 790927539, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 798059140, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+      m_SpriteOverride: {fileID: 790927539, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638357642683156881
+  m_ModificationHash: 638358087012281351
   m_Version: 1

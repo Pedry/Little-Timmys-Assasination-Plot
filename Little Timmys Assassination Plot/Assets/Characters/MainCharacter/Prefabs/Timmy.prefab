@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2845481355277682262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11017801, y: 1.1987618, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1282100527, guid: f04e5ee2678911e4db2a79c0ed692718, type: 3}
+  m_Sprite: {fileID: -955432434, guid: e17232893e6459f4f9f113248c61f9f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 48, y: 51}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 60
   walkSpeedDiag: 40
-  animationEngine: {fileID: 0}
+  animationEngine: {fileID: 3133501211911689649, guid: e7cdac79b6d23764fab7acca7410f259, type: 3}
   timmyHimself: {fileID: 2845481355277682262}
 --- !u!50 &3725071251761995302
 Rigidbody2D:
@@ -170,7 +170,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 48, y: 51}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 48, y: 51}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f04e5ee2678911e4db2a79c0ed692718
+guid: e17232893e6459f4f9f113248c61f9f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: timothy-animated-sprite_0
+      name: timothy-animated-sprite 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22bfb25417894e04c88517928c969ffe
-      internalID: 1282100527
+      spriteID: 377d84f1ff402a946a16844485d86407
+      internalID: -955432434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_1
+      name: timothy-animated-sprite 1_1
       rect:
         serializedVersion: 2
         x: 48
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b02de43f90cf804fac8e5e07749723a
-      internalID: -130020826
+      spriteID: 5384f2963bb4d1341be93234840dbeb0
+      internalID: 787213031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_2
+      name: timothy-animated-sprite 1_2
       rect:
         serializedVersion: 2
         x: 96
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 242f15b2f56cfe146af731c856b07857
-      internalID: 1113184990
+      spriteID: 67a881edbdf267b48a574aca1a3dfa51
+      internalID: -970569964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_3
+      name: timothy-animated-sprite 1_3
       rect:
         serializedVersion: 2
         x: 144
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a96920ad13df3e4fbb26964db659b80
-      internalID: 2053991251
+      spriteID: 5b8e2e9c370d4c3459bb51cd45aec043
+      internalID: -1032577065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_4
+      name: timothy-animated-sprite 1_4
       rect:
         serializedVersion: 2
         x: 192
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dff94c899d5485147b3c8da1c1fdd6f3
-      internalID: 1451034455
+      spriteID: 7394b9ef6524e21498db6b82f79e06fb
+      internalID: -1335039025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_5
+      name: timothy-animated-sprite 1_5
       rect:
         serializedVersion: 2
         x: 240
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f52942f97d2f8146b019cebcd81cf87
-      internalID: 1509309466
+      spriteID: 16d887f7f33b59e4fa15d2c3898fe310
+      internalID: 358803673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_6
+      name: timothy-animated-sprite 1_6
       rect:
         serializedVersion: 2
         x: 288
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fc526727572b6242b0a80105a58253f
-      internalID: -792055371
+      spriteID: 35a7b8cdfd9589648bc402df72351e44
+      internalID: 1527542551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_7
+      name: timothy-animated-sprite 1_7
       rect:
         serializedVersion: 2
         x: 336
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b124347e1aea95845bbe33169ed15913
-      internalID: 1859330014
+      spriteID: 3258122209f8f5e45b963f48e25bf2e8
+      internalID: 468173160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_8
+      name: timothy-animated-sprite 1_8
       rect:
         serializedVersion: 2
         x: 384
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cbebda136170ad47964e9f35a8265b4
-      internalID: 1487216684
+      spriteID: 16821cae4b59975418144abbc0e3bd05
+      internalID: -2078428616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_9
+      name: timothy-animated-sprite 1_9
       rect:
         serializedVersion: 2
         x: 432
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2847bbb8abf694a91ece2ddcaa5b86
-      internalID: -2079525838
+      spriteID: 6bdb369d875411e4abee5f7da565c917
+      internalID: 1217876734
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_10
+      name: timothy-animated-sprite 1_10
       rect:
         serializedVersion: 2
         x: 480
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 371d951c664909348a7849817bcf890e
-      internalID: -1180241818
+      spriteID: ee8b4aa61d0d5ee48938688d0df4161a
+      internalID: 2078308727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_11
+      name: timothy-animated-sprite 1_11
       rect:
         serializedVersion: 2
         x: 528
@@ -368,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 811805f781f3c5841985e05b80c9bcb3
-      internalID: 1188755957
+      spriteID: 84cfe13a93f15e147ae6ae48d48c8c0d
+      internalID: -151255169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_12
+      name: timothy-animated-sprite 1_12
       rect:
         serializedVersion: 2
         x: 576
@@ -389,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95f9b310352708843b0f9b0cbdee3d84
-      internalID: 458426706
+      spriteID: b09ca7bcb16ce3745a40613a7aa2d29a
+      internalID: -558960118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_13
+      name: timothy-animated-sprite 1_13
       rect:
         serializedVersion: 2
         x: 624
@@ -410,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3077b12f2651ac4bb397d95da1e3a70
-      internalID: -975498057
+      spriteID: 4d453ca7ede329042b8e399aff410cc9
+      internalID: -280594017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_14
+      name: timothy-animated-sprite 1_14
       rect:
         serializedVersion: 2
         x: 672
@@ -431,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 712523b17980f3641a091bb33a1ef799
-      internalID: -1652071446
+      spriteID: 6f72bf2dd4808e54c86860e03edf3d72
+      internalID: 1052436668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_15
+      name: timothy-animated-sprite 1_15
       rect:
         serializedVersion: 2
         x: 720
@@ -452,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6344a16c1a25dcb49a1adbd16fae54d1
-      internalID: 798059140
+      spriteID: 2a730498ea693e9429537992daafe878
+      internalID: 790927539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_16
+      name: timothy-animated-sprite 1_16
       rect:
         serializedVersion: 2
         x: 768
@@ -473,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a975c4fddaeccfe43b90bb88a6880ffc
-      internalID: -674621142
+      spriteID: a8413470efddf25418a04c19ed5d0283
+      internalID: 828879799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_17
+      name: timothy-animated-sprite 1_17
       rect:
         serializedVersion: 2
         x: 816
@@ -494,14 +494,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799d8bae0c4ba2f48b02d71836e2a0e4
-      internalID: 970641928
+      spriteID: 8ef91e4ed0e509a49b8843b0523e53ad
+      internalID: 2135596285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_18
+      name: timothy-animated-sprite 1_18
       rect:
         serializedVersion: 2
         x: 864
@@ -515,14 +515,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67d5304780d71814ebd6526b5856dcea
-      internalID: 918965829
+      spriteID: 881f78e9cb2572948b0761c855603f3d
+      internalID: 1244648345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: timothy-animated-sprite_19
+      name: timothy-animated-sprite 1_19
       rect:
         serializedVersion: 2
         x: 912
@@ -536,8 +536,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5cf4e4f62fb94547a696a06b15a69d7
-      internalID: 266590657
+      spriteID: 22fd0e805091d634c90b1e314adf1ab2
+      internalID: -1773180729
       vertices: []
       indices: 
       edges: []
@@ -553,26 +553,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      timothy-animated-sprite_0: 1282100527
-      timothy-animated-sprite_1: -130020826
-      timothy-animated-sprite_10: -1180241818
-      timothy-animated-sprite_11: 1188755957
-      timothy-animated-sprite_12: 458426706
-      timothy-animated-sprite_13: -975498057
-      timothy-animated-sprite_14: -1652071446
-      timothy-animated-sprite_15: 798059140
-      timothy-animated-sprite_16: -674621142
-      timothy-animated-sprite_17: 970641928
-      timothy-animated-sprite_18: 918965829
-      timothy-animated-sprite_19: 266590657
-      timothy-animated-sprite_2: 1113184990
-      timothy-animated-sprite_3: 2053991251
-      timothy-animated-sprite_4: 1451034455
-      timothy-animated-sprite_5: 1509309466
-      timothy-animated-sprite_6: -792055371
-      timothy-animated-sprite_7: 1859330014
-      timothy-animated-sprite_8: 1487216684
-      timothy-animated-sprite_9: -2079525838
+      timothy-animated-sprite 1_0: -955432434
+      timothy-animated-sprite 1_1: 787213031
+      timothy-animated-sprite 1_10: 2078308727
+      timothy-animated-sprite 1_11: -151255169
+      timothy-animated-sprite 1_12: -558960118
+      timothy-animated-sprite 1_13: -280594017
+      timothy-animated-sprite 1_14: 1052436668
+      timothy-animated-sprite 1_15: 790927539
+      timothy-animated-sprite 1_16: 828879799
+      timothy-animated-sprite 1_17: 2135596285
+      timothy-animated-sprite 1_18: 1244648345
+      timothy-animated-sprite 1_19: -1773180729
+      timothy-animated-sprite 1_2: -970569964
+      timothy-animated-sprite 1_3: -1032577065
+      timothy-animated-sprite 1_4: -1335039025
+      timothy-animated-sprite 1_5: 358803673
+      timothy-animated-sprite 1_6: 1527542551
+      timothy-animated-sprite 1_7: 468173160
+      timothy-animated-sprite 1_8: -2078428616
+      timothy-animated-sprite 1_9: 1217876734
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
