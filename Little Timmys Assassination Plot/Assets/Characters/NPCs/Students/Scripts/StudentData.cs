@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StudentData : MonoBehaviour
+public class StudentData : MonoBehaviour, ISavable
 {
 
     [SerializeField]
