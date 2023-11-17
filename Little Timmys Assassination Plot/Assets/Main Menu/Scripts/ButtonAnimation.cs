@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
 public class ButtonAnimation : Button
 {
+
+    [SerializeField] private SettingsMenu settingsMenu;
+
     new Image image;
     SpriteLibrary spriteLibrary;
 
