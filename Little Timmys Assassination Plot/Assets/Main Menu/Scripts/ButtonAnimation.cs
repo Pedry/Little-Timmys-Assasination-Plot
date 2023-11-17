@@ -23,6 +23,7 @@ public class ButtonAnimation : Button
     protected override void Awake()
     {
         base.Awake();
+        Cursor.lockState = CursorLockMode.Confined;
         state = State.Idle;
         spriteLibrary = GetComponent<SpriteLibrary>();
         image = GetComponent<Image>();
