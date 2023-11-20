@@ -102,10 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c031d969f76d70b4cadfa81b3dbabced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 60
-  walkSpeedDiag: 40
-  animationEngine: {fileID: 3133501211911689649, guid: e7cdac79b6d23764fab7acca7410f259, type: 3}
-  timmyHimself: {fileID: 2845481355277682262}
+  walkSpeed: 80
+  walkSpeedDiag: 60
+  walkRight: 0
+  walkLeft: 0
+  walkUp: 0
+  walkDown: 0
+  resetAnimation: 0
+  animationEngine: {fileID: 4457536907684126553, guid: 79022e34022c6e940ae0151574a71a85, type: 3}
 --- !u!50 &3725071251761995302
 Rigidbody2D:
   serializedVersion: 4
@@ -190,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d708fcdb3da112046bef4436ad139daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: -3742069767819281972}
+  engine: {fileID: 4457536907684126553, guid: 79022e34022c6e940ae0151574a71a85, type: 3}
   inputField: {fileID: 0}
   outputField: {fileID: 0}
 --- !u!114 &1123503622664350796

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class InteractionScript : MonoBehaviour
 {
 
     [SerializeField]
+    GameObject engine;
     playerController playerController;
 
     PlayerInput input;
@@ -25,7 +28,23 @@ public class InteractionScript : MonoBehaviour
 
     private void Awake()
     {
-    
+
+        playerController = null;
+
+        foreach (GameObject rootObject in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+
+            if(rootObject.tag.Equals("Engine"))
+            {
+
+                engine = rootObject;
+
+            }
+
+        }
+
+        playerController = engine.GetComponent<playerController>();
+
         interactions = new Interactions();
         input = new PlayerInput();
 
