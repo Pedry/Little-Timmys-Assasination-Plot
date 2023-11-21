@@ -10,8 +10,10 @@ using UnityEngine.UI;
 public class InteractionScript : MonoBehaviour
 {
 
-    [SerializeField]
     GameObject engine;
+    
+    GameObject canvas;
+    
     playerController playerController;
 
     PlayerInput input;
@@ -20,30 +22,79 @@ public class InteractionScript : MonoBehaviour
 
     InteractedScript npcInteraction;
 
-    [SerializeField]
     GameObject inputField;
 
-    [SerializeField]
     GameObject outputField;
 
     private void Awake()
     {
 
         playerController = null;
+        inputField = null;
+        outputField = null;
 
-        foreach (GameObject rootObject in SceneManager.GetActiveScene().GetRootGameObjects())
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
         {
 
-            if(rootObject.tag.Equals("Engine"))
+            if(obj.tag.Equals("Engine"))
             {
 
-                engine = rootObject;
+                engine = obj;
 
             }
 
         }
 
-        playerController = engine.GetComponent<playerController>();
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+
+            if (obj.name.Contains("School"))
+            {
+
+
+                foreach(RectTransform obj2 in obj.GetComponentsInChildren<RectTransform>())
+                {
+
+                    if (obj2.gameObject.name.Contains("Canvas"))
+                    {
+
+                        canvas = obj.gameObject;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        foreach (var obj in canvas.GetComponentsInChildren<RectTransform>())
+        {
+
+            if (obj.gameObject.name.Contains("Input"))
+            {
+
+                inputField = obj.gameObject;
+
+            }
+
+        }
+
+
+        foreach (var obj in canvas.GetComponentsInChildren<RectTransform>())
+        {
+
+            if (obj.gameObject.name.Contains("Output"))
+            {
+
+                outputField = obj.gameObject;
+
+            }
+
+        }
+
+
+        playerController = GetComponent<playerController>();
 
         interactions = new Interactions();
         input = new PlayerInput();
@@ -58,7 +109,7 @@ public class InteractionScript : MonoBehaviour
         input.Enable();
 
         input.InGame.Interact.performed += OnInteract;
-        
+
     }
 
     private void OnDisable()

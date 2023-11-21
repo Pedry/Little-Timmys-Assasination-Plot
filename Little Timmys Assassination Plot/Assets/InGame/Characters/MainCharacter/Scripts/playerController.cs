@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public class playerController : MonoBehaviour
 {
+    #region
     //Här deklarerar jag variablar men sätter inget värde på dem. dela upp dem som "hör" ihop! 
+    #endregion
     [SerializeField]
     public float walkSpeed;
     [SerializeField]
@@ -18,8 +22,7 @@ public class playerController : MonoBehaviour
     public bool walkDown;
 
     public bool resetAnimation;
-    [SerializeField]
-    GameObject animationEngine;
+    GameObject engine;
     /* Jag vill använda mig utav andra componenter eller program i unity. 
      * För att scriptet ska kunna förstå det
      * så REFERERAR jag det genom att skriva namnet. OBS: Case Sensitive!
@@ -27,10 +30,11 @@ public class playerController : MonoBehaviour
      * VIKTIGT!När vi refererat något betyder inte det att vi kan använda det än.
      * Vi har bara gjort att programmet vet om att det finns. Resten gör vi senare!
      */
-    
-     
-     
+
+
+    #region
     // "PlayerInput" är namnet på mitt "Input System" som jag installerade i Packet Managern.
+    #endregion
     PlayerInput input;
 
 
@@ -42,7 +46,9 @@ public class playerController : MonoBehaviour
     SpriteLibrary spriteLibrary;
     SpriteRenderer spriteRenderer;
 
+    #region
     // Start is called before the first frame update
+    #endregion
     void Start()
     {
         
@@ -54,22 +60,44 @@ public class playerController : MonoBehaviour
      */
     private void Awake()
     {
+
+        engine = null;
+
+        foreach (GameObject obj in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+
+            if (obj.tag.Equals("Engine"))
+            {
+
+                engine = obj;
+
+            }
+
+        }
+
+        #region
         //I våra scopes så börjar vi sätta värde på våra variablar.
+        #endregion
+
         walkRight = false;
 
         resetAnimation = false;
 
+        #region
         //Högst upp så REFERERADE vi de komponenter som vi vill kunna använda.
         //Här gör vi så att vi faktiskt kan använda dem!
+        #endregion
         rb = GetComponent<Rigidbody2D>();
 
         spriteLibrary = GetComponent<SpriteLibrary>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        #region
         //Här skriver vi namnet vi gav till referensen och skriver "new PlayerInput();"
         //Anledningen till att vi skriver det är så att vi kan ändra på PlayerInput scriptet 
         //Utan att behöva gå in i det. Vi kan nu göra alla ändringar här direkt och våra ändringar 
         //Kommer även ändras i PlayerInput Scriptet också! På detta sättet behöver vi aldrig ens gå in i det andra scriptet. Vi kan hålla oss här!
+        #endregion
         input = new PlayerInput();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,7 +107,10 @@ public class playerController : MonoBehaviour
     {
         
         input.Enable();
+        #region
         //+= betyder att vi lägger till allt på höger sida på vänster sida.
+        #endregion
+
         input.InGame.WalkRight.performed += OnWalkRight;
         input.InGame.WalkLeft.performed += OnWalkLeft;
         input.InGame.WalkUp.performed += OnWalkUp;
@@ -113,12 +144,14 @@ public class playerController : MonoBehaviour
         input.InGame.WalkRight.Enable();
 
     }
+
+    [BurstCompile]
     private void OnDisable()
     {
         input.Disable();
     }
 
-    // Update is called once per frame
+    [BurstCompile]
     void FixedUpdate()
     {
         MoveRight(); 
@@ -128,6 +161,7 @@ public class playerController : MonoBehaviour
 
     }
 
+    [BurstCompile]
     private void Update()
     {
 
@@ -135,7 +169,10 @@ public class playerController : MonoBehaviour
 
     }
 
+    #region
     //Funktionen för att flytta oss i höger riktning.
+    #endregion
+    [BurstCompile]
     void MoveRight()
     {
         if (rb.velocity.x > 0.1f)
@@ -163,7 +200,10 @@ public class playerController : MonoBehaviour
         }
     }
 
+    #region
     //Funktionen för att flytta oss i vänster riktning.
+    #endregion
+    [BurstCompile]
     void MoveLeft()
     {
         if (rb.velocity.x < -0.1f)
@@ -188,7 +228,10 @@ public class playerController : MonoBehaviour
         }
     }
 
+    #region
     //Funktionen för att flytta oss i uppåt riktning.
+    #endregion
+    [BurstCompile]
     void MoveUp()
     {
         if (rb.velocity.y > 0.1f)
@@ -214,7 +257,10 @@ public class playerController : MonoBehaviour
         }
     }
 
+    #region
     //Funktionen för att flytta oss i neråt riktning.
+    #endregion
+    [BurstCompile]
     void MoveDown()
     {
         if (rb.velocity.y < -0.1f)
@@ -240,6 +286,7 @@ public class playerController : MonoBehaviour
         }
     }
 
+    [BurstCompile]
     void OnWalkRight(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() == 1)
@@ -247,7 +294,7 @@ public class playerController : MonoBehaviour
             walkRight = true;
             resetAnimation = true;
 
-            transform.localScale = new Vector3(- Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            spriteRenderer.flipX = true;
 
         }
         if (context.ReadValue<float>() == 0)
@@ -256,19 +303,22 @@ public class playerController : MonoBehaviour
         }
 
     }
+    [BurstCompile]
     void OnWalkLeft(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() == 1)
         {
             walkLeft = true;
             resetAnimation = true;
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+            spriteRenderer.flipX = false;
         }
         if (context.ReadValue<float>() == 0)
         {
             walkLeft = false;
         }
     }
+    [BurstCompile]
     void OnWalkUp(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() == 1)
@@ -281,6 +331,7 @@ public class playerController : MonoBehaviour
             walkUp = false;
         }
     }
+    [BurstCompile]
     void OnWalkDown(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() == 1)
@@ -297,6 +348,8 @@ public class playerController : MonoBehaviour
 
     string lastCategory = "Down";
     int lastFrameOffset = 0;
+
+    [BurstCompile]
     void UpdateSprite()
     {
         string label = "timothy-animated-sprite 1_";
@@ -306,7 +359,7 @@ public class playerController : MonoBehaviour
         if (resetAnimation)
         {
 
-            animationEngine.GetComponent<AnimationEngineScript>().ResetTimmyAnimation();
+            engine.GetComponent<AnimationEngineScript>().ResetTimmyAnimation();
             resetAnimation = false;
 
         }
@@ -314,7 +367,7 @@ public class playerController : MonoBehaviour
         if (walkUp && walkLeft)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
             lastCategory = "UpDiag";
             lastFrameOffset = 16;
             return;
@@ -324,7 +377,7 @@ public class playerController : MonoBehaviour
         if(walkDown && walkLeft)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
             lastCategory = "DownDiag";
             lastFrameOffset = 12;
             return;
@@ -334,7 +387,7 @@ public class playerController : MonoBehaviour
         if(walkUp && walkRight)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("UpDiag", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 16));
             lastCategory = "UpDiag";
             lastFrameOffset = 16;
             return;
@@ -344,7 +397,7 @@ public class playerController : MonoBehaviour
         if(walkDown && walkRight)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("DownDiag", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 12));
             lastCategory = "DownDiag";
             lastFrameOffset = 12;
             return;
@@ -354,7 +407,7 @@ public class playerController : MonoBehaviour
         if (walkLeft)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
             lastCategory = "Horizontal";
             lastFrameOffset = 4;
             return;
@@ -364,7 +417,7 @@ public class playerController : MonoBehaviour
         if(walkUp)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("Up", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 8));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Up", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 8));
             lastCategory = "Up";
             lastFrameOffset = 8;
             return;
@@ -374,9 +427,7 @@ public class playerController : MonoBehaviour
         if (walkDown)
         {
 
-            Debug.Log(animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame);
-
-            spriteRenderer.sprite = spriteLibrary.GetSprite("Down", label + animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame);
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Down", label + engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame);
             lastCategory = "Down";
             lastFrameOffset = 0;
             return;
@@ -386,7 +437,7 @@ public class playerController : MonoBehaviour
         if (walkRight)
         {
 
-            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (animationEngine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
+            spriteRenderer.sprite = spriteLibrary.GetSprite("Horizontal", label + (engine.GetComponent<AnimationEngineScript>().timmyAnimationFrame + 4));
             lastCategory = "Horizontal";
             lastFrameOffset = 4;
             return;

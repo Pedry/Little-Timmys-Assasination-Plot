@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class StudentData : MonoBehaviour, ISavable
 {
@@ -12,7 +13,7 @@ public class StudentData : MonoBehaviour, ISavable
     GameObject mainCharacter;
 
     [SerializeField]
-    public Information information;
+    public PersonalInformation information;
 
     GameObject outputField;
 
@@ -60,11 +61,11 @@ public class StudentData : MonoBehaviour, ISavable
                 switch (relation.Key.GetComponent<StudentData>().information.gender)
                 {
 
-                    case Information.Gender.Male:
+                    case PersonalInformation.Gender.Male:
                         targetPronoun1 = "him";
                         targetPronoun2 = "he";
                         break;
-                    case Information.Gender.Female:
+                    case PersonalInformation.Gender.Female:
                         targetPronoun1 = "her";
                         targetPronoun2 = "she";
                         break;
@@ -165,7 +166,7 @@ public class StudentData : MonoBehaviour, ISavable
 }
 
 [Serializable]
-public class Information
+public class PersonalInformation
 {
     public enum Gender
     {

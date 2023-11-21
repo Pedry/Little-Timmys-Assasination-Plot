@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 
 public class AnimationEngineScript : MonoBehaviour
@@ -9,10 +10,13 @@ public class AnimationEngineScript : MonoBehaviour
     public int timmyAnimationFrame;
     public int studentAnimationFrame;
     public int worldAnimationFrame;
+    public int fps;
+    public int fpsUpdate;
 
     float timmyAnimationTime;
     float studentAnimationTime;
     float worldAnimationTime;
+    float fpstime;
 
     [SerializeField]
     float timmyAnimationTimeCap;
@@ -20,7 +24,7 @@ public class AnimationEngineScript : MonoBehaviour
     float studentAnimationTimeCap;
     [SerializeField]
     float worldAnimationTimeCap;
-
+    [BurstCompile]
     void Awake()
     {
         
@@ -33,7 +37,7 @@ public class AnimationEngineScript : MonoBehaviour
         worldAnimationTime = 0;
 
     }
-
+    [BurstCompile]
     void Update()
     {
 
@@ -41,16 +45,20 @@ public class AnimationEngineScript : MonoBehaviour
 
         UpdateAnimations();
 
-    }
+        fpsUpdate++;
 
+    }
+    [BurstCompile]
     void Timers()
     {
+
         timmyAnimationTime += Time.deltaTime;
         studentAnimationTime += Time.deltaTime;
         worldAnimationTime += Time.deltaTime;
+        fpstime += Time.deltaTime;
 
     }
-
+    [BurstCompile]
     void UpdateAnimations()
     {
 
@@ -78,10 +86,17 @@ public class AnimationEngineScript : MonoBehaviour
 
         }
 
+        if(fpstime > 1)
+        {
+            fpstime = 0;
+            fps = fpsUpdate;
+            fpsUpdate = 0;
+        }
+
         CycleAnimationFrame();
 
     }
-
+    [BurstCompile]
     void CycleAnimationFrame()
     {
 
@@ -107,7 +122,7 @@ public class AnimationEngineScript : MonoBehaviour
         }
 
     }
-
+    [BurstCompile]
     public void ResetTimmyAnimation()
     {
 
