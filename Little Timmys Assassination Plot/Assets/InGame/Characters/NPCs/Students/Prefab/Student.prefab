@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3932223661557049423}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 263.9, y: 124.8, z: 0}
   m_LocalScale: {x: 10.643, y: 10.643, z: 10.643}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 2845481355277682262, guid: 67fc4107b48eb0441835d2ea13ca4956, type: 3}
   information:
-    gender: 1
-    name: Alice
+    gender: 0
+    name: Bobby
 --- !u!114 &4475594221046564060
 MonoBehaviour:
   m_ObjectHideFlags: 0

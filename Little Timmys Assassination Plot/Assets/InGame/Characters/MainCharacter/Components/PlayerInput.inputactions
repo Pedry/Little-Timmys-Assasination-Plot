@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RandomizeNavigation",
+                    "type": "Button",
+                    "id": "6ac99951-3c1d-46b8-aede-8bb0562fc6ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -168,6 +177,17 @@
                     "action": "QuitGame",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b243ffb8-c121-499e-9624-804b8de785b3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RandomizeNavigation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

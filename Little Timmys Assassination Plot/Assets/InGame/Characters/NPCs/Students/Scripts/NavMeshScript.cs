@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Burst;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class NavMeshScript : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class NavMeshScript : MonoBehaviour
     StudentAnimation studentAnimation;
 
     Rigidbody2D rb;
+
+    PlayerInput input;
 
     float stateTimer;
 
@@ -34,6 +38,8 @@ public class NavMeshScript : MonoBehaviour
     void Awake()
     {
 
+        input = new PlayerInput();
+
         layerY = transform.position.z;
         
         agent = GetComponent<NavMeshAgent>();
@@ -51,11 +57,42 @@ public class NavMeshScript : MonoBehaviour
     private void OnEnable()
     {
 
+        input.Enable();
+
+        input.InGame.RandomizeNavigation.performed += RandomizeNavigation;
+
         agent.Warp(new Vector3(transform.position.x, transform.position.y, layerY));
 
         agent.SetDestination(target.position);
 
         UpdateState();
+    }
+
+    void RandomizeNavigation(InputAction.CallbackContext context)
+    {
+
+        GameObject floor = GameObject.Find("Floor");
+
+        Tilemap tilemap = floor.GetComponent<Tilemap>();
+
+        BoundsInt boundsInt = tilemap.cellBounds;
+
+        Vector3 position = boundsInt.position * 32;
+        Vector3 size = boundsInt.size;
+
+        for (int i = 0; i < size.x; i++)
+        {
+
+            for(int j = 0; j < size.y; j++)
+            {
+
+                Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), position + new Vector3(i, j, 0), Quaternion.identity);
+
+            }
+
+        }
+
+
     }
 
     private void Start()
