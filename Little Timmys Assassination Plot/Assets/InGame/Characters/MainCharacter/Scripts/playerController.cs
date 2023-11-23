@@ -46,6 +46,8 @@ public class playerController : MonoBehaviour
     SpriteLibrary spriteLibrary;
     SpriteRenderer spriteRenderer;
 
+    GameObject camera;
+
     #region
     // Start is called before the first frame update
     #endregion
@@ -60,6 +62,8 @@ public class playerController : MonoBehaviour
      */
     private void Awake()
     {
+
+        camera = Camera.main.gameObject;
 
         engine = null;
 
@@ -164,6 +168,8 @@ public class playerController : MonoBehaviour
     [BurstCompile]
     private void Update()
     {
+
+        camera.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, camera.transform.position.z);
 
         UpdateSprite();
 
@@ -289,6 +295,9 @@ public class playerController : MonoBehaviour
     [BurstCompile]
     void OnWalkRight(InputAction.CallbackContext context)
     {
+
+        Debug.Log(context.ReadValue<float>());
+
         if (context.ReadValue<float>() == 1)
         {
             walkRight = true;

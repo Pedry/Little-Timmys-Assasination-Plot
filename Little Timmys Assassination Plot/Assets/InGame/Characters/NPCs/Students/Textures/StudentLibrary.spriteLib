@@ -723,6 +723,148 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 98476558, guid: bb355db41bbc15c4c80500ee19deadc0, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 13
+  - m_Name: Oberon
+    m_Hash: 1071430927
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Oberon_0
+      m_Hash: 678105066
+      m_Sprite: {fileID: 1450795432, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1450795432, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_1
+      m_Hash: 527187836
+      m_Sprite: {fileID: 2005621095, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2005621095, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_2
+      m_Hash: 107310790
+      m_Sprite: {fileID: 848792761, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 848792761, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_3
+      m_Hash: 828530256
+      m_Sprite: {fileID: -1490819266, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1490819266, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_4
+      m_Hash: 788974579
+      m_Sprite: {fileID: 1130800960, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1130800960, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_5
+      m_Hash: 402783077
+      m_Sprite: {fileID: -730846666, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -730846666, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_6
+      m_Hash: 17345247
+      m_Sprite: {fileID: -1770685441, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1770685441, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_7
+      m_Hash: 906992201
+      m_Sprite: {fileID: 1006872778, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1006872778, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_8
+      m_Hash: 649103320
+      m_Sprite: {fileID: 700400380, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 700400380, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_9
+      m_Hash: 297252686
+      m_Sprite: {fileID: -1476475539, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1476475539, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_10
+      m_Hash: 762809865
+      m_Sprite: {fileID: -1449614024, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1449614024, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_11
+      m_Hash: 443596447
+      m_Sprite: {fileID: 402854739, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 402854739, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    - m_Name: Oberon_12
+      m_Hash: 58322725
+      m_Sprite: {fileID: 745762687, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 745762687, guid: 2530cc9e34408134eaa0136009d62695, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 13
+  - m_Name: Ophelia
+    m_Hash: 250634230
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Ophelia_0
+      m_Hash: 588326758
+      m_Sprite: {fileID: -1435917979, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1435917979, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_1
+      m_Hash: 336992240
+      m_Sprite: {fileID: -1298863567, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1298863567, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_2
+      m_Hash: 220153418
+      m_Sprite: {fileID: 1703006306, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1703006306, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_3
+      m_Hash: 974681820
+      m_Sprite: {fileID: 1446119228, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1446119228, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_4
+      m_Hash: 612164479
+      m_Sprite: {fileID: -268239405, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -268239405, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_5
+      m_Hash: 326882281
+      m_Sprite: {fileID: -787584080, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -787584080, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_6
+      m_Hash: 175276627
+      m_Sprite: {fileID: 303782726, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 303782726, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_7
+      m_Hash: 1031123653
+      m_Sprite: {fileID: -1469582851, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1469582851, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_8
+      m_Hash: 768257876
+      m_Sprite: {fileID: -356937721, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -356937721, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_9
+      m_Hash: 449683394
+      m_Sprite: {fileID: 590083508, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 590083508, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_10
+      m_Hash: 166869802
+      m_Sprite: {fileID: -585254979, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -585254979, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_11
+      m_Hash: 1056246716
+      m_Sprite: {fileID: 1750464140, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1750464140, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    - m_Name: Ophelia_12
+      m_Hash: 670849542
+      m_Sprite: {fileID: 1987447423, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1987447423, guid: 4e08e5b0b173e5a43b50b592bcf06260, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 13
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638360996917549654
+  m_ModificationHash: 638362726348127786
   m_Version: 1

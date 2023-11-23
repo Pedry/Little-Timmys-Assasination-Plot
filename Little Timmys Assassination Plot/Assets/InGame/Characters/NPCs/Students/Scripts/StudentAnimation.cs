@@ -19,11 +19,15 @@ public class StudentAnimation : MonoBehaviour
     bool flippedRight;
     public bool isMoving;
 
+    public LifeState lifeState;
+
     Vector3 lastPosition;
 
     [BurstCompile]
     void Awake()
     {
+
+        lifeState = LifeState.Alive;
 
         lastPosition = new Vector3(0, 0, 0);
 
@@ -104,7 +108,19 @@ public class StudentAnimation : MonoBehaviour
     [BurstCompile]
     void UpdateSprite()
     {
+
         string name = studentData.information.name;
+
+        if (lifeState == LifeState.Dead)
+        {
+
+            spriteRenderer.sprite = spriteLibrary.GetSprite(name, name + "_12");
+
+            isMoving = false;
+
+            return;
+
+        }
 
         if (!isMoving)
         {
@@ -157,6 +173,14 @@ public class StudentAnimation : MonoBehaviour
             return;
 
         }
+    }
+
+    public enum LifeState
+    {
+
+        Alive,
+        Dead
+
     }
 
 }

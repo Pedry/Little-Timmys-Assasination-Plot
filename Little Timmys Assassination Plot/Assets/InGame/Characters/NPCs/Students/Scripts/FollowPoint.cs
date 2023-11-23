@@ -9,8 +9,10 @@ public class FollowPoint : MonoBehaviour
 
     private void Awake()
     {
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
+
     }
 
     // Start is called before the first frame update

@@ -11,7 +11,7 @@
                     "id": "b7b06c20-4d8d-4537-825d-3ae4e6ef341c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press,Press(behavior=1)",
+                    "interactions": "Press(pressPoint=0.6),Press(pressPoint=0.4,behavior=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -72,6 +72,15 @@
                     "name": "RandomizeNavigation",
                     "type": "Button",
                     "id": "6ac99951-3c1d-46b8-aede-8bb0562fc6ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PickUp",
+                    "type": "Button",
+                    "id": "e72dad88-21bf-42c7-aee3-99ed3f18f0ab",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -186,6 +195,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RandomizeNavigation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e95531f-e581-4345-acd6-a6cbeb4fec03",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press,Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "PickUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

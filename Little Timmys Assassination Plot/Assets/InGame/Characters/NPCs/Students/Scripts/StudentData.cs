@@ -174,6 +174,20 @@ public class PersonalInformation
         Female
     }
 
+    public enum FriendGroup
+    {
+
+        Group1,
+        Group2,
+        Group3,
+        Group4,
+        Group5,
+        Group6,
+        Group7,
+        Group8
+
+    }
+
     public Gender gender;
     public string name;
 

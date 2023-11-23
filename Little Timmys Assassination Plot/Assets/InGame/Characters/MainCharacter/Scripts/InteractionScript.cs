@@ -71,7 +71,7 @@ public class InteractionScript : MonoBehaviour
         foreach (var obj in canvas.GetComponentsInChildren<RectTransform>())
         {
 
-            if (obj.gameObject.name.Contains("Input"))
+            if (obj.gameObject.name.Contains("Interact"))
             {
 
                 inputField = obj.gameObject;
@@ -79,6 +79,8 @@ public class InteractionScript : MonoBehaviour
             }
 
         }
+
+        inputField = GameObject.Find("InteractCanvas");
 
 
         foreach (var obj in canvas.GetComponentsInChildren<RectTransform>())
@@ -122,6 +124,18 @@ public class InteractionScript : MonoBehaviour
     void OnInteract(InputAction.CallbackContext context)
     {
 
+        if(npcInteraction != null)
+        {
+
+            if (npcInteraction.GetComponent<StudentAnimation>().isMoving)
+            {
+
+                return;
+
+            }
+
+        }
+
         if(context.ReadValue<float>() == 1)
         {
             interactions.interact = true;
@@ -155,8 +169,6 @@ public class InteractionScript : MonoBehaviour
 
         inputField.SetActive(true);
 
-        inputField.GetComponent<TMP_InputField>().ActivateInputField();
-
         playerController.DisableMovement();
 
     }
@@ -166,11 +178,6 @@ public class InteractionScript : MonoBehaviour
 
         if(context.ReadValue<float>() == 1)
         {
-
-            npcInteraction.SetOutputField(outputField);
-            npcInteraction.AskedAbout(inputField.GetComponent<TMP_InputField>().text);
-
-            inputField.GetComponent<TMP_InputField>().text = "";
 
             inputField.SetActive(false);
 

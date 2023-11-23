@@ -33,7 +33,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""b7b06c20-4d8d-4537-825d-3ae4e6ef341c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press,Press(behavior=1)"",
+                    ""interactions"": ""Press(pressPoint=0.6),Press(pressPoint=0.4,behavior=1)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -94,6 +94,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""RandomizeNavigation"",
                     ""type"": ""Button"",
                     ""id"": ""6ac99951-3c1d-46b8-aede-8bb0562fc6ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""e72dad88-21bf-42c7-aee3-99ed3f18f0ab"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -210,6 +219,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""RandomizeNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e95531f-e581-4345-acd6-a6cbeb4fec03"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press,Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""PickUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -243,6 +263,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_Complete = m_InGame.FindAction("Complete", throwIfNotFound: true);
         m_InGame_QuitGame = m_InGame.FindAction("QuitGame", throwIfNotFound: true);
         m_InGame_RandomizeNavigation = m_InGame.FindAction("RandomizeNavigation", throwIfNotFound: true);
+        m_InGame_PickUp = m_InGame.FindAction("PickUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,6 +333,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Complete;
     private readonly InputAction m_InGame_QuitGame;
     private readonly InputAction m_InGame_RandomizeNavigation;
+    private readonly InputAction m_InGame_PickUp;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -324,6 +346,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Complete => m_Wrapper.m_InGame_Complete;
         public InputAction @QuitGame => m_Wrapper.m_InGame_QuitGame;
         public InputAction @RandomizeNavigation => m_Wrapper.m_InGame_RandomizeNavigation;
+        public InputAction @PickUp => m_Wrapper.m_InGame_PickUp;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -357,6 +380,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RandomizeNavigation.started += instance.OnRandomizeNavigation;
             @RandomizeNavigation.performed += instance.OnRandomizeNavigation;
             @RandomizeNavigation.canceled += instance.OnRandomizeNavigation;
+            @PickUp.started += instance.OnPickUp;
+            @PickUp.performed += instance.OnPickUp;
+            @PickUp.canceled += instance.OnPickUp;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -385,6 +411,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RandomizeNavigation.started -= instance.OnRandomizeNavigation;
             @RandomizeNavigation.performed -= instance.OnRandomizeNavigation;
             @RandomizeNavigation.canceled -= instance.OnRandomizeNavigation;
+            @PickUp.started -= instance.OnPickUp;
+            @PickUp.performed -= instance.OnPickUp;
+            @PickUp.canceled -= instance.OnPickUp;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -421,5 +450,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnComplete(InputAction.CallbackContext context);
         void OnQuitGame(InputAction.CallbackContext context);
         void OnRandomizeNavigation(InputAction.CallbackContext context);
+        void OnPickUp(InputAction.CallbackContext context);
     }
 }

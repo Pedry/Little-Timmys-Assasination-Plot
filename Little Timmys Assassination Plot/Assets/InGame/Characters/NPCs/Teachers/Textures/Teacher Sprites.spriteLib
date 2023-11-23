@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Lucy
+    m_Hash: 95773662
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lucy_0
+      m_Hash: 287538702
+      m_Sprite: {fileID: -1814881464, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1814881464, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_1
+      m_Hash: 639913624
+      m_Sprite: {fileID: 1432056823, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1432056823, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_2
+      m_Hash: 1059921698
+      m_Sprite: {fileID: 1426145814, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1426145814, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_3
+      m_Hash: 136982452
+      m_Sprite: {fileID: 426139027, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 426139027, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_4
+      m_Hash: 374258199
+      m_Sprite: {fileID: -1805530202, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1805530202, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_5
+      m_Hash: 558467713
+      m_Sprite: {fileID: -504208204, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -504208204, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_6
+      m_Hash: 943774523
+      m_Sprite: {fileID: 1610767807, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1610767807, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_7
+      m_Hash: 256371629
+      m_Sprite: {fileID: -690354119, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -690354119, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_8
+      m_Hash: 536409660
+      m_Sprite: {fileID: 544190275, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 544190275, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_9
+      m_Hash: 687851178
+      m_Sprite: {fileID: -986590830, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -986590830, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_10
+      m_Hash: 183099417
+      m_Sprite: {fileID: -1505360945, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1505360945, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_11
+      m_Hash: 1039061135
+      m_Sprite: {fileID: -1174123268, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1174123268, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    - m_Name: Lucy_12
+      m_Hash: 619151669
+      m_Sprite: {fileID: 1916796950, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1916796950, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 13
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638362723919167376
+  m_Version: 1

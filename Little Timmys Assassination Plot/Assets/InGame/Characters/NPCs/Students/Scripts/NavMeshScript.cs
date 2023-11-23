@@ -4,6 +4,7 @@ using Unity.Burst;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class NavMeshScript : MonoBehaviour
@@ -24,6 +25,10 @@ public class NavMeshScript : MonoBehaviour
 
     float layerY;
 
+    List<GameObject> navigationTiles;
+    GameObject tileReference;
+
+
     public enum Movement
     {
 
@@ -37,6 +42,8 @@ public class NavMeshScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
+        navigationTiles = new List<GameObject>();
 
         input = new PlayerInput();
 
@@ -52,6 +59,18 @@ public class NavMeshScript : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        foreach (GameObject gameObject in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+
+            if (gameObject.name == "FloorTileReference")
+            {
+
+                tileReference = gameObject;
+
+            }
+
+        }
+
     }
 
     private void OnEnable()
@@ -66,9 +85,10 @@ public class NavMeshScript : MonoBehaviour
         agent.SetDestination(target.position);
 
         UpdateState();
+
     }
 
-    void RandomizeNavigation(InputAction.CallbackContext context)
+    void GenerateNavigationPositions()
     {
 
         GameObject floor = GameObject.Find("Floor");
@@ -77,21 +97,64 @@ public class NavMeshScript : MonoBehaviour
 
         BoundsInt boundsInt = tilemap.cellBounds;
 
-        Vector3 position = boundsInt.position * 32;
-        Vector3 size = boundsInt.size;
+        Vector3 position
+            = boundsInt.position;
+        Vector3 size
+            = boundsInt.size * 80;
+        Vector3 mapPositionOffset
+            = new Vector3(boundsInt.position.x, boundsInt.position.y) * 80;
 
-        for (int i = 0; i < size.x; i++)
+        GameObject mapPositionsParent = GameObject.Find("NavigationTiles");
+
+        tileReference.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0f);
+
+        for (int i = 0; i < size.x; i += 80)
         {
 
-            for(int j = 0; j < size.y; j++)
+            for (int j = 0; j < size.y; j += 80)
             {
 
-                Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), position + new Vector3(i, j, 0), Quaternion.identity);
+                GameObject instance = Instantiate(tileReference, position
+                    + new Vector3(i, j, 0)
+                    + mapPositionOffset
+                    + new Vector3(0.5f * 80, 0.5f * 80, 0), Quaternion.identity);
+
+                instance.transform.localScale = (Vector3.one * 80);
+
+                instance.transform.SetParent(mapPositionsParent.transform, true);
+
+                navigationTiles.Add(instance);
 
             }
 
         }
+        
 
+    }
+
+    void RandomizeNavigation(InputAction.CallbackContext context)
+    {
+
+        int minIndex = 0;
+        int maxIndex = navigationTiles.Count-1;
+
+        int randomIndex = Random.Range(minIndex, maxIndex);
+
+        target.gameObject.transform.position = new Vector3(navigationTiles[randomIndex].transform.position.x, navigationTiles[randomIndex].transform.position.y, transform.position.z);
+
+
+        if (agent.CalculatePath(target.position, agent.path))
+        {
+
+            Debug.Log("Path Found!");
+
+        }
+        else
+        {
+
+            RandomizeNavigation(context);
+
+        }
 
     }
 
@@ -102,11 +165,27 @@ public class NavMeshScript : MonoBehaviour
 
         UpdateState();
 
+        GenerateNavigationPositions();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if(GetComponent<StudentAnimation>() != null)
+        {
+
+            if(GetComponent<StudentAnimation>().lifeState == StudentAnimation.LifeState.Dead)
+            {
+
+                rb.velocity = Vector3.zero;
+
+                return;
+
+            }
+
+        }
 
         Timers();
 
