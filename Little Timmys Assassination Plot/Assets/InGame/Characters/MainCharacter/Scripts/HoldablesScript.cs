@@ -89,7 +89,7 @@ public class HoldablesScript : MonoBehaviour
         if(heldItem != null)
         {
 
-            heldItem.transform.position = new Vector3(transform.position.x, transform.position.y, heldItem.transform.position.z);
+            heldItem.transform.position = new Vector3(transform.position.x, transform.position.y + 25, heldItem.transform.position.z);
 
         }
 
