@@ -75,6 +75,8 @@ public class StudentAnimation : MonoBehaviour
 
         UpdateSprite();
 
+        lifeState = GetComponent<StudentData>().information.lifeState;
+
     }
 
     private void LateUpdate()
@@ -108,6 +110,11 @@ public class StudentAnimation : MonoBehaviour
     [BurstCompile]
     void UpdateSprite()
     {
+
+        Debug.Log(studentData);
+        Debug.Log(studentData.information);
+        Debug.Log(studentData.information.name);
+
 
         string name = studentData.information.name;
 

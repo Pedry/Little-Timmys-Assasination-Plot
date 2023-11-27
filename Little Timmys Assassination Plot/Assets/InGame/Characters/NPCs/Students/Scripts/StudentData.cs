@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class StudentData : MonoBehaviour, ISavable
+public class StudentData : MonoBehaviour
 {
 
     [SerializeField]
@@ -28,6 +28,8 @@ public class StudentData : MonoBehaviour, ISavable
 
     void Start()
     {
+
+
 
         
     }
@@ -116,53 +118,6 @@ public class StudentData : MonoBehaviour, ISavable
         }
 
     }
-
-    public void SaveData()
-    {
-        
-        string data = JsonUtility.ToJson(acquaintances);
-
-        if (!File.Exists(Application.persistentDataPath + "/StudentData"))
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData");
-
-
-        }
-        
-        if (File.Exists(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json"))
-        {
-            
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json", data);
-            
-        }
-        else
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json");
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json", data);
-
-        }
-
-        
-        data = JsonUtility.ToJson(information);
-        
-        if (File.Exists(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json"))
-        {
-            
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json", data);
-            
-        }
-        else
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json");
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json", data);
-
-        }
-        
-
-    }
 }
 
 [Serializable]
@@ -188,8 +143,13 @@ public class PersonalInformation
 
     }
 
+    public StudentAnimation.LifeState lifeState;
+    public float[] pos;
+
+    public FriendGroup friendGroup;
     public Gender gender;
     public string name;
+
 
 }
 

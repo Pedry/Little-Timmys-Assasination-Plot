@@ -46,7 +46,7 @@ public class HoldablesScript : MonoBehaviour
                 foreach(GameObject item in collidingStudents)
                 {
 
-                    item.GetComponentInChildren<StudentAnimation>().lifeState = StudentAnimation.LifeState.Dead;
+                    item.GetComponentInChildren<StudentData>().information.lifeState = StudentAnimation.LifeState.Dead;
 
                 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst;
 using UnityEngine;
 
-public class EntitiySorter : MonoBehaviour
+public class EntityDepthSorter : MonoBehaviour
 {
     [BurstCompile]
     // Start is called before the first frame update
