@@ -143,8 +143,6 @@ public class InteractionScript : MonoBehaviour
             if(npcInteraction != null)
             {
 
-                npcInteraction.ChangeColor();
-
                 input.InGame.Complete.performed += ExitInputField;
 
                 input.InGame.Complete.Enable();

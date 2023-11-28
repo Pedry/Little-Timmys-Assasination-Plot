@@ -248,6 +248,10 @@ PrefabInstance:
       propertyPath: information.gender
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Alice
@@ -324,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.gender
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -589,6 +597,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.gender
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -1050,6 +1062,10 @@ PrefabInstance:
       propertyPath: information.name
       value: Lars
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Lars
@@ -1146,6 +1162,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Alex
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -1296,6 +1316,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Brian
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -2498,6 +2522,10 @@ PrefabInstance:
       propertyPath: information.name
       value: Becca
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Becca
@@ -2575,6 +2603,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Lucas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -2657,6 +2689,10 @@ PrefabInstance:
     - target: {fileID: 2304714991676630961, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -2741,6 +2777,10 @@ PrefabInstance:
       propertyPath: information.name
       value: Geroge
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Geroge
@@ -2810,6 +2850,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Casper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -2915,6 +2959,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.gender
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -3027,6 +3075,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Oberon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -3144,6 +3196,10 @@ PrefabInstance:
       propertyPath: information.name
       value: Samantha
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Samantha
@@ -3213,6 +3269,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.name
       value: Biff
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -3287,6 +3347,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 0aafa4e7c00ec6549aa5fb96a3b63cb7, type: 3}
       propertyPath: m_Name
+      value: Lucy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994170244766564482, guid: 0aafa4e7c00ec6549aa5fb96a3b63cb7, type: 3}
+      propertyPath: information.name
       value: Lucy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4822,6 +4886,10 @@ PrefabInstance:
       propertyPath: information.name
       value: Ashley
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Ashley
@@ -4940,6 +5008,10 @@ PrefabInstance:
       propertyPath: information.gender
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Tiffany
@@ -5008,6 +5080,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.gender
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
@@ -5237,6 +5313,10 @@ PrefabInstance:
       propertyPath: information.gender
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253791302662241395, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: m_Name
       value: Rachel
@@ -5318,6 +5398,10 @@ PrefabInstance:
     - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: information.gender
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578673459682704087, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
+      propertyPath: information.pos.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4475594221046564060, guid: 6b91876be9c7db746ae78b7a68ace4e7, type: 3}
       propertyPath: isMoving

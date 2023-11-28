@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class TeacherData : MonoBehaviour, ISavable
+public class TeacherData : MonoBehaviour
 {
 
     [SerializeField]
@@ -117,50 +117,4 @@ public class TeacherData : MonoBehaviour, ISavable
 
     }
 
-    public void SaveData()
-    {
-        
-        string data = JsonUtility.ToJson(acquaintances);
-
-        if (!File.Exists(Application.persistentDataPath + "/StudentData"))
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData");
-
-
-        }
-        
-        if (File.Exists(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json"))
-        {
-            
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json", data);
-            
-        }
-        else
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json");
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Acquaintances.json", data);
-
-        }
-
-        
-        data = JsonUtility.ToJson(information);
-        
-        if (File.Exists(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json"))
-        {
-            
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json", data);
-            
-        }
-        else
-        {
-
-            File.Create(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json");
-            File.WriteAllText(Application.persistentDataPath + "/StudentData/" + information.name + "_Information.json", data);
-
-        }
-        
-
-    }
 }

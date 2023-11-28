@@ -11,7 +11,7 @@ public class TeacherAnimation : MonoBehaviour
     SpriteLibrary spriteLibrary;
     SpriteRenderer spriteRenderer;
 
-    StudentData studentData;
+    TeacherData studentData;
 
     GameObject engine;
 
@@ -36,7 +36,7 @@ public class TeacherAnimation : MonoBehaviour
         spriteLibrary = GetComponent<SpriteLibrary>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        studentData = GetComponent<StudentData>();
+        studentData = GetComponent<TeacherData>();
 
         engine = null;
 

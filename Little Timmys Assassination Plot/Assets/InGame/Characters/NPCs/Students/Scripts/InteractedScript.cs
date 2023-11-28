@@ -32,13 +32,6 @@ public class InteractedScript : MonoBehaviour
 
     }
 
-    public void ChangeColor()
-    {
-
-        spriteRenderer.color = new Color(Mathf.Clamp01(spriteRenderer.color.r + Random.Range(-0.2f, 0.2f)), Mathf.Clamp01(spriteRenderer.color.g + Random.Range(-0.2f, 0.2f)), Mathf.Clamp01(spriteRenderer.color.b + Random.Range(-0.2f, 0.2f)), 1);
-
-    }
-
     public void SetOutputField(GameObject outputField)
     {
 
@@ -50,6 +43,23 @@ public class InteractedScript : MonoBehaviour
     {
 
         GetComponent<StudentData>().AskedAbout(name);
+
+    }
+
+    void RaycastVision()
+    {
+
+        List<GameObject> list = new List<GameObject>();
+
+        List<Collider2D> collision = new List<Collider2D>();
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        Debug.Log(collision.gameObject.name);
 
     }
 

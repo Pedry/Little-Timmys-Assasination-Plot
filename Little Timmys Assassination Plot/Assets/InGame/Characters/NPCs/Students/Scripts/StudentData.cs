@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public class StudentData : MonoBehaviour
@@ -17,43 +19,24 @@ public class StudentData : MonoBehaviour
 
     GameObject outputField;
 
-    [SerializeField]
+
     public Dictionary<GameObject, Relation> acquaintances;
-
-
-
 
 
     private void Awake()
     {
 
-        int likesTimmy = 0;
+        acquaintances = new Dictionary<GameObject, Relation>();
 
+        int index = 0;
 
-        foreach(KeyValuePair<GameObject, Relation> pair in acquaintances)
+        foreach (GameObject instance in GameObject.FindGameObjectsWithTag("Student"))
         {
 
-            if (pair.Key.Equals(mainCharacter))
+            if (instance.GetComponent<TeacherAnimation>() == null)
             {
 
-                likesTimmy = pair.Value.likes;
-
-            }
-
-        }
-
-        foreach(KeyValuePair<GameObject, Relation> pair in acquaintances)
-        {
-
-            if (pair.Key.name.Equals("Alex"))
-            {
-
-                if(pair.Value.likes < likesTimmy)
-                {
-
-                    //Help Timmy
-
-                }
+                acquaintances.Add(instance, new Relation());
 
             }
 
@@ -64,7 +47,6 @@ public class StudentData : MonoBehaviour
     void Start()
     {
 
-        
     }
 
     public void SetOutputField(GameObject outputField)
@@ -176,12 +158,25 @@ public class PersonalInformation
 
     }
 
+    [SerializeField]
+    public KeyValuePair<string, Relation>[] pairs;
+
     public StudentAnimation.LifeState lifeState;
-    public float[] pos;
+    public float[] savePosition;
+
+    public float[] saveNavPointPosition;
 
     public FriendGroup friendGroup;
     public Gender gender;
     public string name;
+
+    public PersonalInformation()
+    {
+
+        savePosition = new float[3];
+        saveNavPointPosition = new float[3];
+
+    }
 
 
 }

@@ -111,10 +111,6 @@ public class StudentAnimation : MonoBehaviour
     void UpdateSprite()
     {
 
-        Debug.Log(studentData);
-        Debug.Log(studentData.information);
-        Debug.Log(studentData.information.name);
-
 
         string name = studentData.information.name;
 

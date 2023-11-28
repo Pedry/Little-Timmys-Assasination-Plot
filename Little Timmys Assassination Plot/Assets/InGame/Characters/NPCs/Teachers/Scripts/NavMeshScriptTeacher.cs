@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
-public class NavMeshScript : MonoBehaviour
+public class NavMeshScriptTeacher : MonoBehaviour
 {
 
     [SerializeField]
-    public Transform target;
+    Transform target;
 
     NavMeshAgent agent;
 
-    StudentAnimation studentAnimation;
+    TeacherAnimation teacherAnimation;
 
     Rigidbody2D rb;
 
@@ -55,7 +55,7 @@ public class NavMeshScript : MonoBehaviour
 
         state = Movement.Vertical;
 
-        studentAnimation = GetComponent<StudentAnimation>();
+        teacherAnimation = GetComponent<TeacherAnimation>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -200,7 +200,7 @@ public class NavMeshScript : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
 
-            studentAnimation.isMoving = false;
+            teacherAnimation.isMoving = false;
 
             return;
 
@@ -208,7 +208,7 @@ public class NavMeshScript : MonoBehaviour
         else
         {
 
-            studentAnimation.isMoving = true;
+            teacherAnimation.isMoving = true;
 
         }
 
@@ -220,7 +220,7 @@ public class NavMeshScript : MonoBehaviour
 
                 rb.velocity = new Vector3(40, 0, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Right;
+                teacherAnimation.state = TeacherAnimation.AnimationState.Right;
 
             }
             else
@@ -228,7 +228,7 @@ public class NavMeshScript : MonoBehaviour
 
                 rb.velocity = new Vector3(-40, 0, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Left;
+                teacherAnimation.state = TeacherAnimation.AnimationState.Left;
             }
 
 
@@ -241,7 +241,7 @@ public class NavMeshScript : MonoBehaviour
 
                 rb.velocity = new Vector3(0, 40, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Up;
+                teacherAnimation.state = TeacherAnimation.AnimationState.Up;
 
             }
             else
@@ -249,13 +249,13 @@ public class NavMeshScript : MonoBehaviour
 
                 rb.velocity = new Vector3(0, -40, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Down;
+                teacherAnimation.state = TeacherAnimation.AnimationState.Down;
 
             }
 
         }
 
-        rb.velocity = rb.velocity * GetComponent<StudentStateRules>().stateModifiers.speedMultiplier;
+        rb.velocity = rb.velocity * GetComponent<TeacherStateRules>().stateModifiers.speedMultiplier;
 
     }
 
