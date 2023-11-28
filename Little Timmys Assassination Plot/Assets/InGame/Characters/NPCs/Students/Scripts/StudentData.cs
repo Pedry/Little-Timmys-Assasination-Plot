@@ -17,19 +17,52 @@ public class StudentData : MonoBehaviour
 
     GameObject outputField;
 
-    Dictionary<GameObject, Relation> acquaintances;
+    [SerializeField]
+    public Dictionary<GameObject, Relation> acquaintances;
+
+
+
+
 
     private void Awake()
     {
 
-        acquaintances = new Dictionary<GameObject, Relation>();
+        int likesTimmy = 0;
+
+
+        foreach(KeyValuePair<GameObject, Relation> pair in acquaintances)
+        {
+
+            if (pair.Key.Equals(mainCharacter))
+            {
+
+                likesTimmy = pair.Value.likes;
+
+            }
+
+        }
+
+        foreach(KeyValuePair<GameObject, Relation> pair in acquaintances)
+        {
+
+            if (pair.Key.name.Equals("Alex"))
+            {
+
+                if(pair.Value.likes < likesTimmy)
+                {
+
+                    //Help Timmy
+
+                }
+
+            }
+
+        }
 
     }
 
     void Start()
     {
-
-
 
         
     }
@@ -154,7 +187,7 @@ public class PersonalInformation
 }
 
 [Serializable]
-struct Relation
+public struct Relation
 {
 
     public string lastSeen;
