@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1123503622664350796}
   - component: {fileID: 353428978599920562}
   - component: {fileID: 7121286934162625642}
+  - component: {fileID: -1711428151399899167}
   m_Layer: 0
   m_Name: Timmy
   m_TagString: Untagged
@@ -232,3 +233,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab21837fee72134d8a07474468eb33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heldItem: {fileID: 0}
+--- !u!114 &-1711428151399899167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845481355277682262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3bb1a03692b974e820edd51f6aee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    position:
+    - 0
+    - 0
+    - 0
+    lookDirections: 00000000
+    path: 
+    heldItem: 

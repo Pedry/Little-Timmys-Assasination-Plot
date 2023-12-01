@@ -13,7 +13,7 @@ public class NavMeshScript : MonoBehaviour
     [SerializeField]
     public Transform target;
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     StudentAnimation studentAnimation;
 
@@ -163,6 +163,8 @@ public class NavMeshScript : MonoBehaviour
 
     }
 
+    public bool targetReached;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -202,11 +204,15 @@ public class NavMeshScript : MonoBehaviour
 
             studentAnimation.isMoving = false;
 
+            targetReached = true;
+
             return;
 
         }
         else
         {
+
+            targetReached = false;
 
             studentAnimation.isMoving = true;
 

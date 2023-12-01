@@ -16,10 +16,10 @@ public class playerController : MonoBehaviour
     [SerializeField]
     public float walkSpeedDiag;
 
-    public bool walkRight;
-    public bool walkLeft;
-    public bool walkUp;
-    public bool walkDown;
+    public bool walkRight = false;
+    public bool walkLeft = false;
+    public bool walkUp = false;
+    public bool walkDown = true;
 
     public bool resetAnimation;
     GameObject engine;
@@ -355,8 +355,8 @@ public class playerController : MonoBehaviour
         }
     }
 
-    string lastCategory = "Down";
-    int lastFrameOffset = 0;
+    public string lastCategory = "Down";
+    public int lastFrameOffset = 0;
 
     [BurstCompile]
     void UpdateSprite()

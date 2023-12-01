@@ -104,7 +104,7 @@ public class StudentAnimation : MonoBehaviour
 
     public AnimationState state;
 
-    int lastFrameOffset = 0;
+    public int lastFrameOffset = 0;
     int lastAnimationFrame;
 
     [BurstCompile]

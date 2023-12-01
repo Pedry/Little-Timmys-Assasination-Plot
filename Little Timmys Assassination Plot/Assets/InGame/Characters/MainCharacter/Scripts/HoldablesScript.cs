@@ -10,7 +10,7 @@ public class HoldablesScript : MonoBehaviour
 
     bool pickingUp = false;
 
-    GameObject heldItem;
+    public GameObject heldItem;
 
     List<GameObject> collidingStudents;
 
@@ -37,20 +37,36 @@ public class HoldablesScript : MonoBehaviour
     void PickUpInput(InputAction.CallbackContext context)
     {
 
-        if(heldItem != null)
+        if(context.ReadValue<float>() == 1)
         {
 
-            if(collidingStudents.Count > 0)
+            if (heldItem != null)
             {
 
-                foreach(GameObject item in collidingStudents)
+                if (collidingStudents.Count > 0)
                 {
 
-                    item.GetComponentInChildren<StudentData>().information.lifeState = StudentAnimation.LifeState.Dead;
+                    foreach (GameObject student in collidingStudents)
+                    {
+
+                        student.GetComponentInChildren<StudentData>().information.lifeState = StudentAnimation.LifeState.Dead;
+
+                        if(student.GetComponentInChildren<StudentVisionScript>().studentsInView.Keys.Count > 0)
+                        {
+
+                            foreach (GameObject witness in student.GetComponentInChildren<StudentVisionScript>().studentsInView.Keys)
+                            {
+
+
+                            }
+
+                        }
+
+                    }
+
+                    return;
 
                 }
-
-                return;
 
             }
 

@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 6994170244766564482}
   - component: {fileID: 6268090619934361810}
   - component: {fileID: 4250083670004023290}
+  - component: {fileID: 7758221013829691643}
   m_Layer: 0
   m_Name: Body
   m_TagString: Student
@@ -352,7 +353,14 @@ MonoBehaviour:
   mainCharacter: {fileID: 2845481355277682262, guid: 67fc4107b48eb0441835d2ea13ca4956, type: 3}
   information:
     lifeState: 0
-    pos: []
+    savePosition:
+    - 0
+    - 0
+    - 0
+    saveNavPointPosition:
+    - 0
+    - 0
+    - 0
     friendGroup: 0
     gender: 1
     name: Name
@@ -379,6 +387,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c077684c28383f4597e5affd3efbb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7758221013829691643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891652202364902297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96371224cc20959438efc89260e1ec8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6253791302662241395

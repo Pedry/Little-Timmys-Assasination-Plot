@@ -11,7 +11,7 @@ public class NavMeshScriptTeacher : MonoBehaviour
 {
 
     [SerializeField]
-    Transform target;
+    public Transform target;
 
     NavMeshAgent agent;
 

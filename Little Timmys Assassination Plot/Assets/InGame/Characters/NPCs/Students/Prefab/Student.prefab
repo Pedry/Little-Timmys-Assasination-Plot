@@ -118,7 +118,8 @@ GameObject:
   - component: {fileID: 4140903154514956886}
   - component: {fileID: 6128975930613625399}
   - component: {fileID: 4758369673549796350}
-  m_Layer: 0
+  - component: {fileID: 6686182838894788079}
+  m_Layer: 7
   m_Name: Body
   m_TagString: Student
   m_Icon: {fileID: 0}
@@ -219,10 +220,19 @@ MonoBehaviour:
   mainCharacter: {fileID: 2845481355277682262, guid: 67fc4107b48eb0441835d2ea13ca4956, type: 3}
   information:
     lifeState: 0
-    pos: []
+    savePosition:
+    - 0
+    - 0
+    - 0
+    saveNavPointPosition:
+    - 0
+    - 0
+    - 0
     friendGroup: 0
     gender: 0
     name: Bobby
+    lastFrame: 0
+    animationState: 0
 --- !u!114 &4475594221046564060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +248,7 @@ MonoBehaviour:
   isMoving: 0
   lifeState: 0
   state: 0
+  lastFrameOffset: 0
 --- !u!114 &5848915378997008060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2304714991676630961}
+  agent: {fileID: 0}
 --- !u!195 &4400016301549367331
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -393,6 +405,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9ee9d0a49b581145b31ed580451ebfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6686182838894788079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891652202364902297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfaeb2eb32977d46aa0af992ab7ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6253791302662241395

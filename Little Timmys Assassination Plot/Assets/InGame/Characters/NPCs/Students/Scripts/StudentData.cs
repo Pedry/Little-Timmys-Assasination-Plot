@@ -26,6 +26,9 @@ public class StudentData : MonoBehaviour
     private void Awake()
     {
 
+        information.lastFrame = 0;
+        information.animationState = StudentAnimation.AnimationState.Down;
+
         acquaintances = new Dictionary<GameObject, Relation>();
 
         int index = 0;
@@ -177,6 +180,9 @@ public class PersonalInformation
         saveNavPointPosition = new float[3];
 
     }
+
+    public int lastFrame;
+    public StudentAnimation.AnimationState animationState;
 
 
 }

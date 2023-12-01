@@ -5,6 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine.InputSystem;
 using System.Linq;
+using System.Threading;
 
 public class StudentSaver : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class StudentSaver : MonoBehaviour
 
     string path;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,7 +24,8 @@ public class StudentSaver : MonoBehaviour
         studentAnimation = GetComponent<StudentAnimation>();
         studentData = GetComponent<StudentData>();
 
-        path = Application.persistentDataPath + "/" + studentData.information.name + ".json";
+        path = Application.persistentDataPath + "/" + studentData.information.name + ".ltap";
+
 
     }
 
@@ -43,13 +46,23 @@ public class StudentSaver : MonoBehaviour
         foreach(KeyValuePair<GameObject, Relation> instance in studentData.acquaintances)
         {
 
-            Debug.Log(instance.Key.GetComponent<StudentData>().information.name);
-
             tempPairs.Add(instance.Key.GetComponent<StudentData>().information.name, instance.Value);
 
         }
 
         studentData.information.pairs = tempPairs.ToArray();
+
+        studentData.information.lastFrame = GetComponent<StudentAnimation>().lastFrameOffset;
+        studentData.information.animationState = GetComponent<StudentAnimation>().state;
+
+        Thread thread = new Thread(ThreadedSerialisation);
+        thread.IsBackground = true;
+        thread.Start();
+
+    }
+
+    void ThreadedSerialisation()
+    {
 
         if (File.Exists(path))
         {
@@ -58,7 +71,7 @@ public class StudentSaver : MonoBehaviour
             File.Delete(path);
             FileStream stream = File.Create(path);
             stream.Close();
-            File.WriteAllText(path, JsonConvert.SerializeObject(studentData.information, Formatting.Indented));
+            File.WriteAllText(path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
 
         }
         else
@@ -67,10 +80,9 @@ public class StudentSaver : MonoBehaviour
 
             FileStream stream = File.Create(path);
             stream.Close();
-            File.WriteAllText(path, JsonConvert.SerializeObject(studentData.information, Formatting.Indented));
+            File.WriteAllText(path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
 
         }
-
 
     }
 
@@ -80,7 +92,7 @@ public class StudentSaver : MonoBehaviour
         if (File.Exists(path))
         {
 
-            studentData.information = JsonConvert.DeserializeObject<PersonalInformation>(File.ReadAllText(path));
+            studentData.information = JsonConvert.DeserializeObject<PersonalInformation>(SavingEngineScript.Decrypt(File.ReadAllText(path)));
 
             Dictionary<GameObject, Relation> tempPairs = new Dictionary<GameObject, Relation>();
 
@@ -106,15 +118,20 @@ public class StudentSaver : MonoBehaviour
                     studentData.information.saveNavPointPosition[1], 
                     studentData.information.saveNavPointPosition[2]);
 
-                Debug.Log(Application.persistentDataPath);
+                GetComponent<NavMeshScript>().agent.nextPosition = new Vector3(
+                    studentData.information.savePosition[0],
+                    studentData.information.savePosition[1],
+                    studentData.information.savePosition[2]);
+
+                GetComponent<NavMeshScript>().agent.Warp(new Vector3(
+                    studentData.information.savePosition[0],
+                    studentData.information.savePosition[1],
+                    studentData.information.savePosition[2]));
 
             }
 
-        }
-        else
-        {
-
-
+            GetComponent<StudentAnimation>().lastFrameOffset = studentData.information.lastFrame;
+            GetComponent<StudentAnimation>().state = studentData.information.animationState;
 
         }
 
