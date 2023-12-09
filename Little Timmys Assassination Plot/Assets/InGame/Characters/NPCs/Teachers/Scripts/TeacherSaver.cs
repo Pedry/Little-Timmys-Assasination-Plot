@@ -15,7 +15,7 @@ public class TeacherSaver : MonoBehaviour
     {
         
         data = new Data();
-        data.path = Application.persistentDataPath + "/" + name + ".ltap";
+        data.path = Application.persistentDataPath + "/" + GetComponent<TeacherData>().information.name + ".ltap";
         data.position = new float[3];
         data.navPointPosition = new float[3];
         data.lastFrame = 0;
@@ -51,7 +51,7 @@ public class TeacherSaver : MonoBehaviour
             File.Delete(data.path);
             FileStream stream = File.Create(data.path);
             stream.Close();
-            File.WriteAllText(data.path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(data, Formatting.Indented)));
+            File.WriteAllText(data.path, (JsonConvert.SerializeObject(data, Formatting.Indented)));
 
         }
         else
@@ -59,7 +59,7 @@ public class TeacherSaver : MonoBehaviour
 
             FileStream stream = File.Create(data.path);
             stream.Close();
-            File.WriteAllText(data.path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(data, Formatting.Indented)));
+            File.WriteAllText(data.path, (JsonConvert.SerializeObject(data, Formatting.Indented)));
 
         }
 
@@ -71,17 +71,25 @@ public class TeacherSaver : MonoBehaviour
         if (File.Exists(data.path))
         {
 
-            data = JsonConvert.DeserializeObject<Data>(SavingEngineScript.Decrypt(File.ReadAllText(data.path)));
+            data = JsonConvert.DeserializeObject<Data>((File.ReadAllText(data.path)));
+
+            GetComponent<NavMeshScriptTeacher>().agent.Warp(new Vector3(
+                data.position[0],
+                data.position[1],
+                data.position[2]));
 
             transform.position = new Vector3(
                 data.position[0],
                 data.position[1],
                 data.position[2]);
 
-            GetComponent<NavMeshScriptTeacher>().target.gameObject.transform.position = new Vector3(
+            GetComponent<NavMeshScriptTeacher>().target.position = new Vector3(
                 data.navPointPosition[0],
                 data.navPointPosition[1],
                 data.navPointPosition[2]);
+
+            GetComponent<TeacherData>().information.savePosition = data.position;
+            GetComponent<TeacherData>().information.saveNavPointPosition = data.navPointPosition;
 
             GetComponent<TeacherAnimation>().lastFrameOffset = data.lastFrame;
             GetComponent<TeacherAnimation>().state = data.animationState;

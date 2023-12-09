@@ -25,7 +25,6 @@ public class NavMeshScript : MonoBehaviour
 
     float layerY;
 
-    List<GameObject> navigationTiles;
     GameObject tileReference;
 
 
@@ -37,13 +36,16 @@ public class NavMeshScript : MonoBehaviour
 
     }
 
+    int ppu;
+
     Movement state;
 
     // Start is called before the first frame update
     void Awake()
     {
 
-        navigationTiles = new List<GameObject>();
+        ppu = 96;
+
 
         input = new PlayerInput();
 
@@ -100,53 +102,130 @@ public class NavMeshScript : MonoBehaviour
         Vector3 position
             = boundsInt.position;
         Vector3 size
-            = boundsInt.size * 80;
+            = boundsInt.size * 96;
         Vector3 mapPositionOffset
-            = new Vector3(boundsInt.position.x, boundsInt.position.y) * 80;
+            = new Vector3(boundsInt.position.x, boundsInt.position.y) * ppu;
 
         GameObject mapPositionsParent = GameObject.Find("NavigationTiles");
 
         tileReference.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0f);
 
-        for (int i = 0; i < size.x; i += 80)
+        for (int i = 0; i < size.x; i += ppu)
         {
 
-            for (int j = 0; j < size.y; j += 80)
+            for (int j = 0; j < size.y; j += ppu)
             {
 
                 GameObject instance = Instantiate(tileReference, position
                     + new Vector3(i, j, 0)
                     + mapPositionOffset
-                    + new Vector3(0.5f * 80, 0.5f * 80, 0), Quaternion.identity);
+                    + new Vector3(0.5f * ppu, 0.5f * ppu, 0), Quaternion.identity);
 
-                instance.transform.localScale = (Vector3.one * 80);
+                instance.transform.localScale = (Vector3.one * ppu);
 
                 instance.transform.SetParent(mapPositionsParent.transform, true);
 
-                navigationTiles.Add(instance);
+                NavigationEngine.navigationTiles.Add(instance);
 
             }
 
         }
-        
+
+        Transform saveTransform = target.gameObject.transform;
+
+        List<GameObject> refreshedTiles = new List<GameObject>();
+        List<GameObject> wastedTiles = new List<GameObject>();
+
+        foreach (GameObject instance in NavigationEngine.navigationTiles)
+        {
+
+            target.gameObject.transform.position = new Vector3(instance.transform.position.x, instance.transform.position.y, transform.position.z);
+
+
+            if (agent.CalculatePath(target.position, agent.path))
+            {
+
+                refreshedTiles.Add(instance);
+
+            }
+            else
+            {
+
+                wastedTiles.Add(instance);
+
+            }
+
+        }
+
+        foreach (var item in wastedTiles)
+        {
+
+            Destroy(item);
+            
+        }
+
+        NavigationEngine.navigationTiles = refreshedTiles;
+        target.gameObject.transform.position = saveTransform.position;
+
 
     }
 
-    void RandomizeNavigation(InputAction.CallbackContext context)
+    public void RandomizeNavigation(InputAction.CallbackContext context)
     {
 
         int minIndex = 0;
-        int maxIndex = navigationTiles.Count-1;
+        int maxIndex = NavigationEngine.navigationTiles.Count-1;
 
         int randomIndex = Random.Range(minIndex, maxIndex);
 
-        target.gameObject.transform.position = new Vector3(navigationTiles[randomIndex].transform.position.x, navigationTiles[randomIndex].transform.position.y, transform.position.z);
+        target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
+
+        /*
+        if (!agent.CalculatePath(target.position, agent.path))
+        {
+
+            RandomizeNavigation(context);
+
+        }
+        */
+
+    }
+
+    public void RandomizeNavigationAwayFromTarget(Transform toAvoid)
+    {
+
+        int minIndex = 0;
+        int maxIndex = NavigationEngine.navigationTiles.Count - 1;
+
+        int randomIndex = Random.Range(minIndex, maxIndex);
+
+        target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
+
+
+        if (!agent.CalculatePath(target.position, agent.path) && Mathf.Abs(toAvoid.transform.position.x - target.transform.position.x) < 500 && Mathf.Abs(toAvoid.transform.position.y - target.transform.position.y) < 500)
+        {
+
+            RandomizeNavigationAwayFromTarget(toAvoid);
+
+        }
+
+    }
+
+    public void RandomizeNavigation()
+    {
+
+        int minIndex = 0;
+        int maxIndex = NavigationEngine.navigationTiles.Count - 1;
+
+        int randomIndex = Random.Range(minIndex, maxIndex);
+
+        target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
 
 
         if (!agent.CalculatePath(target.position, agent.path))
         {
 
-            RandomizeNavigation(context);
+            RandomizeNavigation();
 
         }
 
@@ -155,11 +234,21 @@ public class NavMeshScript : MonoBehaviour
     private void Start()
     {
 
-        agent.SetDestination(target.position);
-
         UpdateState();
 
-        GenerateNavigationPositions();
+        if (agent.isOnNavMesh)
+        {
+
+            GenerateNavigationPositions();
+
+            target.position = new Vector3(
+                GetComponent<StudentData>().information.saveNavPointPosition[0],
+                GetComponent<StudentData>().information.saveNavPointPosition[1],
+                GetComponent<StudentData>().information.saveNavPointPosition[2]);
+
+            agent.SetDestination(target.position);
+
+        }
 
     }
 
@@ -192,19 +281,30 @@ public class NavMeshScript : MonoBehaviour
 
             stateTimer = 0;
 
-            UpdateState();
+            if(!targetReached)
+            {
 
+                UpdateMovement();
+
+            }
 
         }
 
-        if(Mathf.Abs(transform.position.x - target.transform.position.x) < 40 && Mathf.Abs(transform.position.y - target.transform.position.y) < 15)
+        UpdateState();
+
+        if (Mathf.Abs(transform.position.x - target.transform.position.x) < 40 && Mathf.Abs(transform.position.y - target.transform.position.y) < 15)
         {
 
-            rb.velocity = new Vector3(0, 0, 0);
+            if(!targetReached)
+            {
 
-            studentAnimation.isMoving = false;
+                rb.velocity = new Vector3(0, 0, 0);
 
-            targetReached = true;
+                studentAnimation.isMoving = false;
+
+                targetReached = true;
+
+            }
 
             return;
 
@@ -218,23 +318,33 @@ public class NavMeshScript : MonoBehaviour
 
         }
 
+    }
+
+    void Timers()
+    {
+
+        stateTimer += Time.deltaTime;
+
+    }
+
+    void UpdateMovement()
+    {
+
         if (state == Movement.Horizontal)
         {
 
-            if(agent.desiredVelocity.x > 0)
+            if (agent.desiredVelocity.x > 0)
             {
 
                 rb.velocity = new Vector3(40, 0, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Right;
 
             }
-            else
+            else if (agent.desiredVelocity.x < 0)
             {
 
                 rb.velocity = new Vector3(-40, 0, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Left;
             }
 
 
@@ -242,33 +352,23 @@ public class NavMeshScript : MonoBehaviour
         else if (state == Movement.Vertical)
         {
 
-            if(agent.desiredVelocity.y > 0)
+            if (agent.desiredVelocity.y > 0)
             {
 
                 rb.velocity = new Vector3(0, 40, 0);
 
-                studentAnimation.state = StudentAnimation.AnimationState.Up;
 
             }
-            else
+            else if (agent.desiredVelocity.y < 0)
             {
 
                 rb.velocity = new Vector3(0, -40, 0);
-
-                studentAnimation.state = StudentAnimation.AnimationState.Down;
 
             }
 
         }
 
         rb.velocity = rb.velocity * GetComponent<StudentStateRules>().stateModifiers.speedMultiplier;
-
-    }
-
-    void Timers()
-    {
-
-        stateTimer += Time.deltaTime;
 
     }
 
@@ -281,12 +381,37 @@ public class NavMeshScript : MonoBehaviour
 
             state = Movement.Horizontal;
 
+            if (rb.velocity.x > 0)
+            {
+
+                studentAnimation.state = StudentAnimation.AnimationState.Right;
+
+            }
+            else if (rb.velocity.x < 0)
+            {
+
+                studentAnimation.state = StudentAnimation.AnimationState.Left;
+
+            }
 
         }
         else
         {
 
             state = Movement.Vertical;
+
+            if (rb.velocity.y> 0)
+            {
+
+                studentAnimation.state = StudentAnimation.AnimationState.Up;
+
+            }
+            else if (rb.velocity.y < 0)
+            {
+
+                studentAnimation.state = StudentAnimation.AnimationState.Down;
+
+            }
 
         }
 
@@ -296,7 +421,12 @@ public class NavMeshScript : MonoBehaviour
     private void Update()
     {
 
-        agent.velocity = Vector3.zero;
+        if (agent != null)
+        {
+
+            agent.velocity = Vector3.zero;
+
+        }
 
     }
 }

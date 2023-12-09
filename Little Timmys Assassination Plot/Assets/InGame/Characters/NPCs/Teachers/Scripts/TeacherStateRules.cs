@@ -7,7 +7,7 @@ public class TeacherStateRules : MonoBehaviour
 
     public StateModifiers stateModifiers;
 
-    State state;
+    public State state;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,12 +33,12 @@ public class TeacherStateRules : MonoBehaviour
                 break;
             case State.Scared:
 
-                stateModifiers.speedMultiplier = 1.5f;
+                stateModifiers.speedMultiplier = 1.7f;
 
                 break;
             case State.Panic:
 
-                stateModifiers.speedMultiplier = 2;
+                stateModifiers.speedMultiplier = 2.3f;
 
                 break;
 

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class EntityDepthSorter : MonoBehaviour
 {
-    [BurstCompile]
-    // Start is called before the first frame update
+
     void Start()
     {
         

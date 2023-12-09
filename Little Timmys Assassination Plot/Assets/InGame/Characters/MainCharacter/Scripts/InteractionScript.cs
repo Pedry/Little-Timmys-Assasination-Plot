@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -111,6 +113,7 @@ public class InteractionScript : MonoBehaviour
         input.Enable();
 
         input.InGame.Interact.performed += OnInteract;
+        input.InGame.DragHuman.performed += OnDragHuman;
 
     }
 
@@ -124,20 +127,37 @@ public class InteractionScript : MonoBehaviour
     void OnInteract(InputAction.CallbackContext context)
     {
 
-        if(npcInteraction != null)
+        if(context.ReadValue<float>() == 1)
         {
 
-            if (npcInteraction.GetComponent<StudentAnimation>().isMoving)
+            if(collidingSofa != null)
             {
 
-                return;
+                if (collidingSofa.GetComponent<SofaCoin>().HasCoin())
+                {
+
+                    collidingSofa.GetComponent<SofaCoin>().GetCoin();
+
+                    Debug.Log(collidingSofa.name);
+
+                }
 
             }
 
-        }
 
-        if(context.ReadValue<float>() == 1)
-        {
+            if (npcInteraction != null)
+            {
+
+
+                if (npcInteraction.GetComponent<StudentAnimation>().isMoving)
+                {
+
+                    return;
+
+                }
+
+            }
+
             interactions.interact = true;
 
             if(npcInteraction != null)
@@ -155,6 +175,58 @@ public class InteractionScript : MonoBehaviour
         else
         {
             interactions.interact = false;
+        }
+
+    }
+
+    void CollectCoin()
+    {
+
+
+
+    }
+
+    void OnDragHuman(InputAction.CallbackContext contex)
+    {
+
+        if(contex.ReadValue<float>() == 1)
+        {
+
+            HandleDragingHuman();
+
+        }
+
+    }
+
+    void HandleDragingHuman()
+    {
+
+        if (GetComponent<HoldablesScript>().dragingHuman != null)
+        {
+
+            GetComponent<HoldablesScript>().dragingHuman.GetComponent<NavMeshAgent>().Warp(GetComponent<HoldablesScript>().dragingHuman.transform.position);
+            GetComponent<HoldablesScript>().dragingHuman.GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<HoldablesScript>().dragingHuman = null;
+
+            return;
+
+        }
+        else
+        {
+
+            if(npcInteraction != null)
+            {
+
+                if (npcInteraction.gameObject.layer == LayerMask.NameToLayer("Corpses"))
+                {
+
+                    GetComponent<HoldablesScript>().dragingHuman = npcInteraction.gameObject;
+                    GetComponent<HoldablesScript>().lastHeldHumanPosition = npcInteraction.gameObject.transform.position;
+
+                }
+
+            }
+
         }
 
     }
@@ -186,6 +258,44 @@ public class InteractionScript : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+        }
+
+    }
+
+    GameObject collidingSofa;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.collider.gameObject.name.Contains("Sofa"))
+        {
+
+            collidingSofa = collision.collider.gameObject;
+
+        }
+        
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+
+        if (collision.collider.gameObject.name.Contains("Sofa"))
+        {
+
+            collidingSofa = collision.collider.gameObject;
+
+        }
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+        if (collision.collider.gameObject.name.Contains("Sofa"))
+        {
+
+            collidingSofa = null;
 
         }
 

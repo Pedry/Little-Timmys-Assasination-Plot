@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Coin
+    m_Hash: 895170659
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Coin_0
+      m_Hash: 1022432873
+      m_Sprite: {fileID: -1198681230, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1198681230, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_1
+      m_Hash: 200681215
+      m_Sprite: {fileID: -1449859377, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1449859377, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_2
+      m_Hash: 318732101
+      m_Sprite: {fileID: -1469296479, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1469296479, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_3
+      m_Hash: 637028307
+      m_Sprite: {fileID: 676159810, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 676159810, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_4
+      m_Hash: 1000133232
+      m_Sprite: {fileID: 2096996298, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2096996298, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_5
+      m_Hash: 211542758
+      m_Sprite: {fileID: 1368349754, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1368349754, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_6
+      m_Hash: 361935708
+      m_Sprite: {fileID: -1520455925, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1520455925, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_7
+      m_Hash: 580223946
+      m_Sprite: {fileID: 1950056407, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1950056407, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_8
+      m_Hash: 841653851
+      m_Sprite: {fileID: 981533763, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 981533763, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_9
+      m_Hash: 86879949
+      m_Sprite: {fileID: -1398376947, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1398376947, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    - m_Name: Coin_10
+      m_Hash: 429049482
+      m_Sprite: {fileID: -104944684, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -104944684, guid: 9fecc1b8f40c82a47bf5125146ecd936, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 11
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638377604976650547
+  m_Version: 1

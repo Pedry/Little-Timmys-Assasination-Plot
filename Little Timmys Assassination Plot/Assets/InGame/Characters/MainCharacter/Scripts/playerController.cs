@@ -45,8 +45,7 @@ public class playerController : MonoBehaviour
 
     SpriteLibrary spriteLibrary;
     SpriteRenderer spriteRenderer;
-
-    GameObject camera;
+    new GameObject camera;
 
     #region
     // Start is called before the first frame update
@@ -295,8 +294,6 @@ public class playerController : MonoBehaviour
     [BurstCompile]
     void OnWalkRight(InputAction.CallbackContext context)
     {
-
-        Debug.Log(context.ReadValue<float>());
 
         if (context.ReadValue<float>() == 1)
         {

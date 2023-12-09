@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using UnityEngine.InputSystem;
 using System.Linq;
 using System.Threading;
+using UnityEngine.AI;
 
 public class StudentSaver : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class StudentSaver : MonoBehaviour
         studentData.information.saveNavPointPosition[1] = GetComponent<NavMeshScript>().target.position.y;
         studentData.information.saveNavPointPosition[2] = GetComponent<NavMeshScript>().target.position.z;
 
+        studentData.information.layer = studentData.gameObject.layer;
+
 
         Dictionary<string, Relation> tempPairs = new Dictionary<string, Relation>();
 
@@ -71,7 +74,7 @@ public class StudentSaver : MonoBehaviour
             File.Delete(path);
             FileStream stream = File.Create(path);
             stream.Close();
-            File.WriteAllText(path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
+            File.WriteAllText(path, (JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
 
         }
         else
@@ -80,7 +83,7 @@ public class StudentSaver : MonoBehaviour
 
             FileStream stream = File.Create(path);
             stream.Close();
-            File.WriteAllText(path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
+            File.WriteAllText(path, (JsonConvert.SerializeObject(studentData.information, Formatting.Indented)));
 
         }
 
@@ -92,7 +95,7 @@ public class StudentSaver : MonoBehaviour
         if (File.Exists(path))
         {
 
-            studentData.information = JsonConvert.DeserializeObject<PersonalInformation>(SavingEngineScript.Decrypt(File.ReadAllText(path)));
+            studentData.information = JsonConvert.DeserializeObject<PersonalInformation>((File.ReadAllText(path)));
 
             Dictionary<GameObject, Relation> tempPairs = new Dictionary<GameObject, Relation>();
 
@@ -105,33 +108,38 @@ public class StudentSaver : MonoBehaviour
 
             studentData.acquaintances = tempPairs;
 
-            if (studentData.information.savePosition.Length > 0)
+            transform.position = new Vector3(
+                studentData.information.savePosition[0],
+                studentData.information.savePosition[1],
+                studentData.information.savePosition[2]);
+
+            GetComponent<NavMeshScript>().target.position = new Vector3(
+                studentData.information.saveNavPointPosition[0],
+                studentData.information.saveNavPointPosition[1],
+                studentData.information.saveNavPointPosition[2]);
+
+            gameObject.layer = studentData.information.layer;
+
+            GetComponent<StudentAnimation>().lastFrameOffset = studentData.information.lastFrame;
+            GetComponent<StudentAnimation>().state = studentData.information.animationState;
+
+            if (studentData.information.lifeState == StudentAnimation.LifeState.Dead)
             {
 
-                transform.position = new Vector3(
-                    studentData.information.savePosition[0], 
-                    studentData.information.savePosition[1], 
-                    studentData.information.savePosition[2]);
+                GetComponent<StudentStateRules>().UpdateCollider();
+                GetComponent<StudentVisionScript>().hasVision = false;
+                GetComponent<NavMeshAgent>().enabled = false;
 
-                GetComponent<NavMeshScript>().target.gameObject.transform.position = new Vector3(
-                    studentData.information.saveNavPointPosition[0], 
-                    studentData.information.saveNavPointPosition[1], 
-                    studentData.information.saveNavPointPosition[2]);
+            }
+            else
+            {
 
-                GetComponent<NavMeshScript>().agent.nextPosition = new Vector3(
-                    studentData.information.savePosition[0],
-                    studentData.information.savePosition[1],
-                    studentData.information.savePosition[2]);
-
-                GetComponent<NavMeshScript>().agent.Warp(new Vector3(
+                GetComponent<NavMeshAgent>().Warp(new Vector3(
                     studentData.information.savePosition[0],
                     studentData.information.savePosition[1],
                     studentData.information.savePosition[2]));
 
             }
-
-            GetComponent<StudentAnimation>().lastFrameOffset = studentData.information.lastFrame;
-            GetComponent<StudentAnimation>().state = studentData.information.animationState;
 
         }
 

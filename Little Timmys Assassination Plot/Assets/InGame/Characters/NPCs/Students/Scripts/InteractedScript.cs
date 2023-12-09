@@ -18,20 +18,6 @@ public class InteractedScript : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-
-
-    }
-
     public void SetOutputField(GameObject outputField)
     {
 
@@ -46,20 +32,9 @@ public class InteractedScript : MonoBehaviour
 
     }
 
-    void RaycastVision()
-    {
-
-        List<GameObject> list = new List<GameObject>();
-
-        List<Collider2D> collision = new List<Collider2D>();
-
-
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Debug.Log(collision.gameObject.name);
 
     }
 

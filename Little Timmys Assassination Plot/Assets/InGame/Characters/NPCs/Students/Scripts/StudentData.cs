@@ -15,6 +15,9 @@ public class StudentData : MonoBehaviour
     GameObject mainCharacter;
 
     [SerializeField]
+    public GameObject alertSignia;
+
+    [SerializeField]
     public PersonalInformation information;
 
     GameObject outputField;
@@ -183,6 +186,8 @@ public class PersonalInformation
 
     public int lastFrame;
     public StudentAnimation.AnimationState animationState;
+
+    public int layer;
 
 
 }

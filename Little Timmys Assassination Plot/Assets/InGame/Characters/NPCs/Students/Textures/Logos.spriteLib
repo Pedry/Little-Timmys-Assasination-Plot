@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Exclamation
+    m_Hash: 492908739
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Exclamation_0
+      m_Hash: 472763016
+      m_Sprite: {fileID: 1479529850, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1479529850, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_1
+      m_Hash: 724236830
+      m_Sprite: {fileID: 1160567434, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1160567434, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_2
+      m_Hash: 841198500
+      m_Sprite: {fileID: -1984467861, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1984467861, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_3
+      m_Hash: 86285106
+      m_Sprite: {fileID: 771080839, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 771080839, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_4
+      m_Hash: 457182865
+      m_Sprite: {fileID: 1576655761, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1576655761, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_5
+      m_Hash: 742866439
+      m_Sprite: {fileID: -308430223, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -308430223, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_6
+      m_Hash: 894332861
+      m_Sprite: {fileID: -14710351, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -14710351, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_7
+      m_Hash: 38362923
+      m_Sprite: {fileID: -884948225, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -884948225, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    - m_Name: Exclamation_8
+      m_Hash: 318128826
+      m_Sprite: {fileID: 1928795476, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1928795476, guid: 9fd3bf26080116147bb27d979efd9846, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 9
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638375791699465109
+  m_Version: 1

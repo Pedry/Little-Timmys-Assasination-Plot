@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DragHuman"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb293ea9-2096-4642-99ff-9c5965af430a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -241,6 +250,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92e1185f-0496-4b1d-856b-bcbcfa0979b2"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Press,Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DragHuman"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,6 +300,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_QuitGame = m_InGame.FindAction("QuitGame", throwIfNotFound: true);
         m_InGame_RandomizeNavigation = m_InGame.FindAction("RandomizeNavigation", throwIfNotFound: true);
         m_InGame_PickUp = m_InGame.FindAction("PickUp", throwIfNotFound: true);
+        m_InGame_DragHuman = m_InGame.FindAction("DragHuman", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +371,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_QuitGame;
     private readonly InputAction m_InGame_RandomizeNavigation;
     private readonly InputAction m_InGame_PickUp;
+    private readonly InputAction m_InGame_DragHuman;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -363,6 +385,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @QuitGame => m_Wrapper.m_InGame_QuitGame;
         public InputAction @RandomizeNavigation => m_Wrapper.m_InGame_RandomizeNavigation;
         public InputAction @PickUp => m_Wrapper.m_InGame_PickUp;
+        public InputAction @DragHuman => m_Wrapper.m_InGame_DragHuman;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +422,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
+            @DragHuman.started += instance.OnDragHuman;
+            @DragHuman.performed += instance.OnDragHuman;
+            @DragHuman.canceled += instance.OnDragHuman;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -430,6 +456,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
+            @DragHuman.started -= instance.OnDragHuman;
+            @DragHuman.performed -= instance.OnDragHuman;
+            @DragHuman.canceled -= instance.OnDragHuman;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -467,5 +496,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnQuitGame(InputAction.CallbackContext context);
         void OnRandomizeNavigation(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
+        void OnDragHuman(InputAction.CallbackContext context);
     }
 }

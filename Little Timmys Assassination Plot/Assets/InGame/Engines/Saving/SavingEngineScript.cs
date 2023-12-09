@@ -14,6 +14,7 @@ public class SavingEngineScript : MonoBehaviour
     List<StudentSaver> saveableStudents = new List<StudentSaver>();
     List<TeacherSaver> saveableTeachers = new List<TeacherSaver>();
     List<ObjectSaver> saveableObjects = new List<ObjectSaver>();
+    List<FurnitureSaver> saveableFurnitures = new List<FurnitureSaver>();
     GameObject timmy;
 
     public delegate void SavingMethods();
@@ -54,7 +55,14 @@ public class SavingEngineScript : MonoBehaviour
 
             }
 
-            if(obj.GetComponent<TimmySaver>() != null)
+            if (obj.GetComponent<FurnitureSaver>() != null)
+            {
+
+                saveableFurnitures.Add(obj.GetComponent<FurnitureSaver>());
+
+            }
+
+            if (obj.GetComponent<TimmySaver>() != null)
             {
                 timmy = obj;
             }
@@ -89,14 +97,19 @@ public class SavingEngineScript : MonoBehaviour
 
         }
 
+        foreach (FurnitureSaver obj in saveableFurnitures)
+        {
+
+            obj.LoadData();
+
+        }
+
         timmy.GetComponent<TimmySaver>().LoadData();
 
     }
 
     void AutoSave()
     {
-
-        Debug.Log("Saving...");
 
         foreach (StudentSaver obj in saveableStudents)
         {
@@ -116,6 +129,13 @@ public class SavingEngineScript : MonoBehaviour
         {
 
             obj.GetComponent<ObjectSaver>().SaveData();
+
+        }
+
+        foreach (FurnitureSaver obj in saveableFurnitures)
+        {
+
+            obj.GetComponent<FurnitureSaver>().SaveData();
 
         }
 

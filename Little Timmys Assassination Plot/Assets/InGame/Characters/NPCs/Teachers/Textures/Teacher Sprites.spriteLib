@@ -84,6 +84,77 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 1916796950, guid: 48937defe2ae6f548b3bfcf79dccb4be, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 13
+  - m_Name: Fredrick
+    m_Hash: 388792937
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Fredrick_0
+      m_Hash: 766150150
+      m_Sprite: {fileID: -1051911728, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1051911728, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_1
+      m_Hash: 447592080
+      m_Sprite: {fileID: -1332931896, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1332931896, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_2
+      m_Hash: 61138730
+      m_Sprite: {fileID: 247374006, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 247374006, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_3
+      m_Hash: 883152828
+      m_Sprite: {fileID: -1651259764, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1651259764, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_4
+      m_Hash: 717701663
+      m_Sprite: {fileID: 875443352, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 875443352, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_5
+      m_Hash: 499151497
+      m_Sprite: {fileID: -1026025179, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1026025179, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_6
+      m_Hash: 80290611
+      m_Sprite: {fileID: 323372174, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 323372174, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_7
+      m_Hash: 869143461
+      m_Sprite: {fileID: 253044679, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 253044679, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_8
+      m_Hash: 594611764
+      m_Sprite: {fileID: 2067912284, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2067912284, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_9
+      m_Hash: 343293602
+      m_Sprite: {fileID: -781606865, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -781606865, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_10
+      m_Hash: 72278483
+      m_Sprite: {fileID: 499241223, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 499241223, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_11
+      m_Hash: 860475717
+      m_Sprite: {fileID: -864683542, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -864683542, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    - m_Name: Fredrick_12
+      m_Hash: 708870399
+      m_Sprite: {fileID: -1490972845, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1490972845, guid: c8727e7b4de0ab44ea16193785d13535, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 13
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638362723919167376
+  m_ModificationHash: 638375910357237099
   m_Version: 1

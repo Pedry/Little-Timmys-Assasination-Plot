@@ -17,12 +17,15 @@ public class ObjectSaver : MonoBehaviour
 
         data.position = new float[3];
         data.path = Application.persistentDataPath + "/" + name + ".ltap";
+        data.subPickedUp = false;
+
     }
 
     public void SaveData()
     {
 
         SavePosition();
+        SaveStats();
 
         if (File.Exists(data.path))
         {
@@ -30,7 +33,7 @@ public class ObjectSaver : MonoBehaviour
             File.Delete(data.path);
             FileStream stream = File.Create(data.path);
             stream.Close();
-            File.WriteAllText(data.path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(data, Formatting.Indented)));
+            File.WriteAllText(data.path, (JsonConvert.SerializeObject(data, Formatting.Indented)));
 
         }
         else
@@ -38,7 +41,7 @@ public class ObjectSaver : MonoBehaviour
 
             FileStream stream = File.Create(data.path);
             stream.Close();
-            File.WriteAllText(data.path, SavingEngineScript.Encrypt(JsonConvert.SerializeObject(data, Formatting.Indented)));
+            File.WriteAllText(data.path, (JsonConvert.SerializeObject(data, Formatting.Indented)));
 
         }
 
@@ -51,9 +54,10 @@ public class ObjectSaver : MonoBehaviour
         if (File.Exists(data.path))
         {
 
-            data = JsonConvert.DeserializeObject<Data>(SavingEngineScript.Decrypt(File.ReadAllText(data.path)));
+            data = JsonConvert.DeserializeObject<Data>((File.ReadAllText(data.path)));
 
             LoadPosition();
+            LoadStats();
 
         }
 
@@ -67,6 +71,24 @@ public class ObjectSaver : MonoBehaviour
         data.position[2] = transform.position.z;
 
     }
+
+    void SaveStats()
+    {
+
+        foreach (GameObject instance in GameObject.Find("Timmy").GetComponent<HoldablesScript>().heldSubItems)
+        {
+
+            if(gameObject == instance)
+            {
+
+                data.subPickedUp = true;
+
+            }
+
+        }
+
+    }
+
     void LoadPosition()
     {
 
@@ -77,12 +99,44 @@ public class ObjectSaver : MonoBehaviour
 
     }
 
+    void LoadStats()
+    {
+
+        if (data.subPickedUp)
+        {
+
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+
+            int i = 0;
+
+            foreach (GameObject instance in GameObject.Find("Timmy").GetComponent<HoldablesScript>().heldSubItems)
+            {
+
+                if (instance == null)
+                {
+
+                    GameObject.Find("Timmy").GetComponent<HoldablesScript>().heldSubItems[i] = gameObject;
+
+                    break;
+
+                }
+
+                i++;
+
+            }
+
+        }
+
+    }
+
     [Serializable]
     struct Data
     {
 
         public float[] position;
         public string path;
+        public bool subPickedUp;
 
     }
 }

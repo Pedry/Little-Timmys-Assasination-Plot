@@ -118,9 +118,9 @@ GameObject:
   - component: {fileID: 6268090619934361810}
   - component: {fileID: 4250083670004023290}
   - component: {fileID: 7758221013829691643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
-  m_TagString: Student
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoving: 0
   state: 0
+  lastFrameOffset: 0
 --- !u!114 &6994170244766564482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +364,9 @@ MonoBehaviour:
     - 0
     friendGroup: 0
     gender: 1
-    name: Name
+    name: Lucy
+    lastFrame: 0
+    animationState: 0
 --- !u!114 &6268090619934361810
 MonoBehaviour:
   m_ObjectHideFlags: 0

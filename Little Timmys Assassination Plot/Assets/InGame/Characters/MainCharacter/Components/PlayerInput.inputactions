@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DragHuman",
+                    "type": "Button",
+                    "id": "fb293ea9-2096-4642-99ff-9c5965af430a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -217,6 +226,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "PickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92e1185f-0496-4b1d-856b-bcbcfa0979b2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "Press,Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "DragHuman",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

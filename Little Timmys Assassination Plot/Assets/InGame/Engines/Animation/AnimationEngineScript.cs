@@ -24,7 +24,7 @@ public class AnimationEngineScript : MonoBehaviour
     float studentAnimationTimeCap;
     [SerializeField]
     float worldAnimationTimeCap;
-    [BurstCompile]
+
     void Awake()
     {
         
@@ -36,8 +36,11 @@ public class AnimationEngineScript : MonoBehaviour
         studentAnimationTime = 0;
         worldAnimationTime = 0;
 
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 0;
+
     }
-    [BurstCompile]
+
     void Update()
     {
 
@@ -48,7 +51,7 @@ public class AnimationEngineScript : MonoBehaviour
         fpsUpdate++;
 
     }
-    [BurstCompile]
+
     void Timers()
     {
 
@@ -58,7 +61,7 @@ public class AnimationEngineScript : MonoBehaviour
         fpstime += Time.deltaTime;
 
     }
-    [BurstCompile]
+
     void UpdateAnimations()
     {
 
@@ -96,7 +99,7 @@ public class AnimationEngineScript : MonoBehaviour
         CycleAnimationFrame();
 
     }
-    [BurstCompile]
+
     void CycleAnimationFrame()
     {
 
@@ -122,7 +125,7 @@ public class AnimationEngineScript : MonoBehaviour
         }
 
     }
-    [BurstCompile]
+
     public void ResetTimmyAnimation()
     {
 

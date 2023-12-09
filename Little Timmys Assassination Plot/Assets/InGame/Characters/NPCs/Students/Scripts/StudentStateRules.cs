@@ -7,7 +7,7 @@ public class StudentStateRules : MonoBehaviour
 
     public StudentStateModifiers stateModifiers;
 
-    State state;
+    public State state;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,16 +33,25 @@ public class StudentStateRules : MonoBehaviour
                 break;
             case State.Scared:
 
-                stateModifiers.speedMultiplier = 1.5f;
+                stateModifiers.speedMultiplier = 1.7f;
 
                 break;
             case State.Panic:
 
-                stateModifiers.speedMultiplier = 2;
+                stateModifiers.speedMultiplier = 2.3f;
 
                 break;
 
         }
+
+    }
+
+    public void UpdateCollider()
+    {
+
+        BoxCollider2D newCollider = GetComponent<BoxCollider2D>();
+        newCollider.offset = new Vector2(0, -11);
+        newCollider.size = new Vector2(48, 29);
 
     }
 

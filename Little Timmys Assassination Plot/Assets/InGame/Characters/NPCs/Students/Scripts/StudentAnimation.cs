@@ -23,7 +23,6 @@ public class StudentAnimation : MonoBehaviour
 
     Vector3 lastPosition;
 
-    [BurstCompile]
     void Awake()
     {
 
@@ -60,7 +59,6 @@ public class StudentAnimation : MonoBehaviour
 
     }
 
-    [BurstCompile]
     private void Start()
     {
 
@@ -68,12 +66,16 @@ public class StudentAnimation : MonoBehaviour
 
     }
 
-
-    [BurstCompile]
+    public bool animationObjective = false;
     void Update()
     {
 
-        UpdateSprite();
+        if(!animationObjective)
+        {
+
+            UpdateSprite();
+
+        }
 
         lifeState = GetComponent<StudentData>().information.lifeState;
 
@@ -83,12 +85,6 @@ public class StudentAnimation : MonoBehaviour
     {
 
         lastPosition = transform.position;
-
-    }
-
-    private void FixedUpdate()
-    {
-       
 
     }
 
@@ -107,7 +103,6 @@ public class StudentAnimation : MonoBehaviour
     public int lastFrameOffset = 0;
     int lastAnimationFrame;
 
-    [BurstCompile]
     void UpdateSprite()
     {
 
