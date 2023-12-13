@@ -181,25 +181,38 @@ public class NavMeshScriptTeacher : MonoBehaviour
 
         target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
 
-        /*
-        if (!agent.CalculatePath(target.position, agent.path))
-        {
+    }
 
-            RandomizeNavigation(context);
+    public void RandomizeNavigation()
+    {
 
-        }
-        */
+        int minIndex = 0;
+        int maxIndex = NavigationEngine.navigationTiles.Count - 1;
+
+        int randomIndex = Random.Range(minIndex, maxIndex);
+
+        target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
 
     }
 
     bool chasingTimmy = false;
+    bool chasingBody = false;
     GameObject timmy;
+    GameObject body;
 
     public void TellOnTimmy(GameObject timmy)
     {
 
         this.timmy = timmy;
         chasingTimmy = true;
+
+    }
+
+    public void TellAboutBody(GameObject body)
+    {
+
+        this.body = body;
+        chasingBody = true;
 
     }
 
@@ -232,20 +245,14 @@ public class NavMeshScriptTeacher : MonoBehaviour
             target.transform.position = timmy.transform.position;
 
         }
-
-        if (GetComponent<StudentAnimation>() != null)
+        else if (chasingBody)
         {
 
-            if(GetComponent<StudentAnimation>().lifeState == StudentAnimation.LifeState.Dead)
-            {
-
-                rb.velocity = Vector3.zero;
-
-                return;
-
-            }
+            target.transform.position = body.transform.position;
 
         }
+
+
 
         Timers();
 
@@ -275,6 +282,14 @@ public class NavMeshScriptTeacher : MonoBehaviour
             teacherAnimation.isMoving = false;
 
             targetReached = true;
+
+            if(chasingBody)
+            {
+
+                chasingBody = false;
+                body = null;
+
+            }
 
             return;
 

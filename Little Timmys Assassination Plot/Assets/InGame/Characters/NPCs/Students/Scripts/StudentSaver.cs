@@ -142,6 +142,12 @@ public class StudentSaver : MonoBehaviour
             }
 
         }
+        else
+        {
+
+            GetComponent<NavMeshScript>().RandomizeNavigation();
+
+        }
 
     }
 

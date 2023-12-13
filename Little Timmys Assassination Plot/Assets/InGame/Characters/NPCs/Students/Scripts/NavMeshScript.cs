@@ -46,6 +46,7 @@ public class NavMeshScript : MonoBehaviour
 
         ppu = 96;
 
+        
 
         input = new PlayerInput();
 
@@ -180,6 +181,8 @@ public class NavMeshScript : MonoBehaviour
 
         target.gameObject.transform.position = new Vector3(NavigationEngine.navigationTiles[randomIndex].transform.position.x, NavigationEngine.navigationTiles[randomIndex].transform.position.y, transform.position.z);
 
+        GetComponent<StudentAnimation>().isMoving = true;
+
         /*
         if (!agent.CalculatePath(target.position, agent.path))
         {
@@ -266,6 +269,7 @@ public class NavMeshScript : MonoBehaviour
 
                 rb.velocity = Vector3.zero;
 
+
                 return;
 
             }
@@ -285,6 +289,13 @@ public class NavMeshScript : MonoBehaviour
             {
 
                 UpdateMovement();
+
+            }
+            else if(GetComponent<StudentStateRules>().state == StudentStateRules.State.Normal)
+            {
+
+                targetReached = false;
+                RandomizeNavigation();
 
             }
 

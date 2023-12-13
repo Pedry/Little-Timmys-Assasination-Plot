@@ -17,6 +17,7 @@ public class TeacherAnimation : MonoBehaviour
 
     bool resetAnimation;
     bool flippedRight;
+
     public bool isMoving;
 
     Vector3 lastPosition;

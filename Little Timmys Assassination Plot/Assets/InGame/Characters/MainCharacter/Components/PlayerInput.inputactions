@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RealTime",
+                    "type": "Button",
+                    "id": "b09decba-44be-4ce0-a5a2-8f03e604df00",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -237,6 +246,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "DragHuman",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6058129d-05d2-4208-b823-0f6b8d3c109f",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "Press,Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "RealTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

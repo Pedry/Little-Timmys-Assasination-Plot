@@ -138,8 +138,6 @@ public class InteractionScript : MonoBehaviour
 
                     collidingSofa.GetComponent<SofaCoin>().GetCoin();
 
-                    Debug.Log(collidingSofa.name);
-
                 }
 
             }

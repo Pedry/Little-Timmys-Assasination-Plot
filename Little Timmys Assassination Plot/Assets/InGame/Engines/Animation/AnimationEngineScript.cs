@@ -37,7 +37,7 @@ public class AnimationEngineScript : MonoBehaviour
         worldAnimationTime = 0;
 
         Application.targetFrameRate = -1;
-        QualitySettings.vSyncCount = 0;
+        QualitySettings.vSyncCount = 1;
 
     }
 

@@ -116,6 +116,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RealTime"",
+                    ""type"": ""Button"",
+                    ""id"": ""b09decba-44be-4ce0-a5a2-8f03e604df00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,6 +270,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""DragHuman"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6058129d-05d2-4208-b823-0f6b8d3c109f"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": ""Press,Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""RealTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -301,6 +321,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_InGame_RandomizeNavigation = m_InGame.FindAction("RandomizeNavigation", throwIfNotFound: true);
         m_InGame_PickUp = m_InGame.FindAction("PickUp", throwIfNotFound: true);
         m_InGame_DragHuman = m_InGame.FindAction("DragHuman", throwIfNotFound: true);
+        m_InGame_RealTime = m_InGame.FindAction("RealTime", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +393,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_RandomizeNavigation;
     private readonly InputAction m_InGame_PickUp;
     private readonly InputAction m_InGame_DragHuman;
+    private readonly InputAction m_InGame_RealTime;
     public struct InGameActions
     {
         private @PlayerInput m_Wrapper;
@@ -386,6 +408,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @RandomizeNavigation => m_Wrapper.m_InGame_RandomizeNavigation;
         public InputAction @PickUp => m_Wrapper.m_InGame_PickUp;
         public InputAction @DragHuman => m_Wrapper.m_InGame_DragHuman;
+        public InputAction @RealTime => m_Wrapper.m_InGame_RealTime;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -425,6 +448,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DragHuman.started += instance.OnDragHuman;
             @DragHuman.performed += instance.OnDragHuman;
             @DragHuman.canceled += instance.OnDragHuman;
+            @RealTime.started += instance.OnRealTime;
+            @RealTime.performed += instance.OnRealTime;
+            @RealTime.canceled += instance.OnRealTime;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -459,6 +485,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DragHuman.started -= instance.OnDragHuman;
             @DragHuman.performed -= instance.OnDragHuman;
             @DragHuman.canceled -= instance.OnDragHuman;
+            @RealTime.started -= instance.OnRealTime;
+            @RealTime.performed -= instance.OnRealTime;
+            @RealTime.canceled -= instance.OnRealTime;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -497,5 +526,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnRandomizeNavigation(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnDragHuman(InputAction.CallbackContext context);
+        void OnRealTime(InputAction.CallbackContext context);
     }
 }

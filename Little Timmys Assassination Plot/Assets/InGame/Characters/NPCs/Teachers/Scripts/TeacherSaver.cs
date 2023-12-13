@@ -96,6 +96,12 @@ public class TeacherSaver : MonoBehaviour
 
 
         }
+        else
+        {
+
+            GetComponent<NavMeshScriptTeacher>().RandomizeNavigation();
+
+        }
 
     }
 

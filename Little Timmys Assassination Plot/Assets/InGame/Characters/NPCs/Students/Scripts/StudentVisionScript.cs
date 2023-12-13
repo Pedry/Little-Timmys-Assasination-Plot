@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.U2D.Animation;
 
 public class StudentVisionScript : MonoBehaviour
@@ -12,6 +13,8 @@ public class StudentVisionScript : MonoBehaviour
     public Dictionary<GameObject, float> teachersInView = new Dictionary<GameObject, float>();
     public Dictionary<GameObject, float> corpsesInView = new Dictionary<GameObject, float>();
     public GameObject lastSeenTeacher;
+
+    GameObject oMeter;
 
     GameObject timmy;
 
@@ -28,6 +31,8 @@ public class StudentVisionScript : MonoBehaviour
 
         visionResolution = 80;
         lastSeenTeacher = GameObject.Find("Lucy").GetComponentInChildren<TeacherData>().gameObject;
+
+        oMeter = GameObject.Find("oMeter");
 
     }
 
@@ -110,6 +115,18 @@ public class StudentVisionScript : MonoBehaviour
 
                 timmy = hit.collider.gameObject;
 
+                if(oMeter.GetComponent<oMeter>().angervalue > 9)
+                {
+
+                    if(GetComponent<StudentStateRules>().state == StudentStateRules.State.Normal)
+                    {
+
+                        SeesTimmyGetAngy();
+
+                    }
+
+                }
+
                 if (timmy.GetComponent<HoldablesScript>().dragingHuman)
                 {
 
@@ -188,6 +205,264 @@ public class StudentVisionScript : MonoBehaviour
                 }
 
             }
+
+        }
+
+        foreach(KeyValuePair<GameObject, float> hit in corpsesInView)
+        {
+
+            if(GetComponent<StudentObjectivesScript>().objectives.Count == 0)
+            {
+
+                SeesDeadHumon(hit.Key);
+
+                break;
+
+            }
+
+        }
+
+    }
+
+    void SeesTimmyGetAngy()
+    {
+
+        if (GetComponent<StudentStateRules>().state != StudentStateRules.State.Panic && GetComponent<StudentStateRules>().state != StudentStateRules.State.Scared)
+        {
+
+            GetComponent<StudentStateRules>().state = StudentStateRules.State.Scared;
+
+            GameObject[] objectiveEntities = new GameObject[1] { gameObject };
+
+            ObjectiveContext jumpUpAndDownBeforeObjective = new ObjectiveContext(objectiveEntities, ObjectiveContext.State.One, ObjectiveContext.GenerateID());
+            ObjectiveContext runAwayObjective = new ObjectiveContext(objectiveEntities, ObjectiveContext.GenerateID());
+
+            float recordTime = 0;
+
+            GetComponent<StudentObjectivesScript>().objectives.Add(jumpUpAndDownBeforeObjective,
+                (jumpUpAndDownBeforeObjective) =>
+                {
+
+                    recordTime += Time.deltaTime;
+
+                    if (jumpUpAndDownBeforeObjective.entities[0].GetComponent<NavMeshScript>() != null)
+                    {
+
+                        Transform navigationPoint = jumpUpAndDownBeforeObjective.entities[0].GetComponent<NavMeshScript>().target;
+                        navigationPoint.position = jumpUpAndDownBeforeObjective.entities[0].transform.position;
+
+                        float jumpTime = 0.07f;
+                        float jumpSpeed = 150f;
+
+                        int witnessIndex = 0;
+                        int restartTime = 0;
+
+                        int animationFrame;
+
+                        jumpUpAndDownBeforeObjective.time += Time.deltaTime;
+
+                        switch (jumpUpAndDownBeforeObjective.state)
+                        {
+
+
+                            case ObjectiveContext.State.One:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 1;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Two;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Two:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 2;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Three;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Three:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 3;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Four;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Four:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 0;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Five;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Five:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 0;
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+
+                                return true;
+
+
+                        }
+
+                    }
+
+                    return false;
+
+                }
+
+
+            );
+
+            GetComponent<StudentObjectivesScript>().objectives.Add(runAwayObjective,
+                (runAwayObjective) =>
+                {
+
+                    if (runAwayObjective.state == ObjectiveContext.State.One)
+                    {
+
+                        runAwayObjective.entities[0].GetComponent<NavMeshScript>().RandomizeNavigation();
+                        runAwayObjective.state = ObjectiveContext.State.Two;
+
+                    }
+
+                    if (runAwayObjective.state == ObjectiveContext.State.Two)
+                    {
+
+                        if(runAwayObjective.entities[0].GetComponent<NavMeshScript>().targetReached)
+                        {
+
+                            runAwayObjective.entities[0].GetComponent<StudentStateRules>().state = StudentStateRules.State.Normal;
+
+                            return true;
+
+                        }
+
+                    }
+                    
+                    return false;
+
+                }
+            );
 
         }
 
@@ -386,8 +661,6 @@ public class StudentVisionScript : MonoBehaviour
                                 jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
 
                                 jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-                                Debug.Log(recordTime);
 
                                 return true;
 
@@ -625,6 +898,453 @@ public class StudentVisionScript : MonoBehaviour
 
                                 return true;
 
+                        }
+
+                    }
+
+                    return false;
+
+                }
+
+
+            );
+
+        }
+
+    }
+
+    void SeesDeadHumon(GameObject deadBody)
+    {
+
+
+        if (GetComponent<StudentStateRules>().state != StudentStateRules.State.Panic)
+        {
+
+            GetComponent<StudentStateRules>().state = StudentStateRules.State.Panic;
+
+            GameObject[] objectiveEntities = new GameObject[1] { gameObject };
+            GameObject allertSignia = Instantiate(GetComponent<StudentData>().alertSignia);
+            allertSignia.transform.position = transform.position + new Vector3(0, 40, 0);
+
+            ObjectiveContext jumpUpAndDownBeforeObjective = new ObjectiveContext(objectiveEntities, ObjectiveContext.State.One, ObjectiveContext.GenerateID());
+            ObjectiveContext runToTeacherObjective = new ObjectiveContext(objectiveEntities, ObjectiveContext.GenerateID());
+            ObjectiveContext jumpUpAndDownAfterObjective = new ObjectiveContext(objectiveEntities, ObjectiveContext.State.One, ObjectiveContext.GenerateID());
+
+            float recordTime = 0;
+
+            GetComponent<StudentObjectivesScript>().objectives.Add(jumpUpAndDownBeforeObjective,
+                (jumpUpAndDownBeforeObjective) =>
+                {
+
+                    recordTime += Time.deltaTime;
+
+                    if (jumpUpAndDownBeforeObjective.entities[0].GetComponent<NavMeshScript>() != null)
+                    {
+
+                        Transform navigationPoint = jumpUpAndDownBeforeObjective.entities[0].GetComponent<NavMeshScript>().target;
+                        navigationPoint.position = jumpUpAndDownBeforeObjective.entities[0].transform.position;
+
+                        float jumpTime = 0.07f;
+                        float jumpSpeed = 150f;
+
+                        int witnessIndex = 0;
+                        int restartTime = 0;
+
+                        int animationFrame;
+
+                        jumpUpAndDownBeforeObjective.time += Time.deltaTime;
+
+                        switch (jumpUpAndDownBeforeObjective.state)
+                        {
+
+
+                            case ObjectiveContext.State.One:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 1;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Two;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Two:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 2;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Three;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Three:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 3;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Four;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Four:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 0;
+
+                                if (jumpUpAndDownBeforeObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownBeforeObjective.state = ObjectiveContext.State.Five;
+                                    jumpUpAndDownBeforeObjective.time = restartTime;
+
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Five:
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                                animationFrame = 0;
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownBeforeObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
+
+                                jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+                                return true;
+
+
+                        }
+
+                    }
+
+                    return false;
+
+                }
+
+
+            );
+
+            GetComponent<StudentObjectivesScript>().objectives.Add(runToTeacherObjective,
+                (runToTeacherObjective) =>
+                {
+
+                    runToTeacherObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
+
+                    if (runToTeacherObjective.entities[0].GetComponent<NavMeshScript>() != null)
+                    {
+
+                        Transform navigationPoint = runToTeacherObjective.entities[0].GetComponent<NavMeshScript>().target;
+                        Transform lastSeenTeacher = runToTeacherObjective.entities[0].GetComponent<StudentVisionScript>().lastSeenTeacher.transform;
+
+                        navigationPoint.position = lastSeenTeacher.position;
+
+                        if (Mathf.Abs(runToTeacherObjective.entities[0].transform.position.x - lastSeenTeacher.transform.position.x) < 50
+                        && Mathf.Abs(runToTeacherObjective.entities[0].transform.position.y - lastSeenTeacher.transform.position.y) < 70)
+                        {
+
+                            runToTeacherObjective.entities[0].GetComponent<NavMeshScript>().target.position = runToTeacherObjective.entities[0].transform.position;
+
+                            GetComponent<StudentStateRules>().state = StudentStateRules.State.Normal;
+
+                            runToTeacherObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                            return true;
+
+                        }
+
+                        else
+                        {
+
+                            return false;
+
+                        }
+
+                    }
+
+                    else
+                    {
+
+                        return true;
+
+                    }
+
+                }
+            );
+
+            GetComponent<StudentObjectivesScript>().objectives.Add(jumpUpAndDownAfterObjective,
+                (jumpUpAndDownAfterObjective) =>
+                {
+
+                    jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = true;
+
+                    jumpUpAndDownAfterObjective.entities[0].GetComponent<NavMeshScript>().target.position = jumpUpAndDownAfterObjective.entities[0].transform.position;
+
+                    if (jumpUpAndDownAfterObjective.entities[0].GetComponent<NavMeshScript>() != null)
+                    {
+
+                        Transform navigationPoint = jumpUpAndDownAfterObjective.entities[0].GetComponent<NavMeshScript>().target;
+
+                        float jumpTime = 0.07f;
+                        float jumpSpeed = 150f;
+
+                        int witnessIndex = 0;
+                        int restartTime = 0;
+
+                        int animationFrame;
+
+
+                        jumpUpAndDownAfterObjective.time += Time.deltaTime;
+
+                        switch (jumpUpAndDownAfterObjective.state)
+                        {
+
+                            case ObjectiveContext.State.One:
+
+                                animationFrame = 1;
+
+                                if (jumpUpAndDownAfterObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownAfterObjective.entities[witnessIndex].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownAfterObjective.state = ObjectiveContext.State.Two;
+                                    jumpUpAndDownAfterObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Two:
+
+                                animationFrame = 2;
+
+                                if (jumpUpAndDownAfterObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownAfterObjective.entities[witnessIndex].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownAfterObjective.state = ObjectiveContext.State.Three;
+                                    jumpUpAndDownAfterObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Three:
+
+                                animationFrame = 3;
+
+                                if (jumpUpAndDownAfterObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownAfterObjective.entities[witnessIndex].GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentVisionScript>().lastSeenTeacher.GetComponent<NavMeshScriptTeacher>().TellAboutBody(deadBody);
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentVisionScript>().lastSeenTeacher.GetComponent<TeacherStateRules>().state = TeacherStateRules.State.Panic;
+
+                                    jumpUpAndDownAfterObjective.state = ObjectiveContext.State.Four;
+                                    jumpUpAndDownAfterObjective.time = restartTime;
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Four:
+
+                                animationFrame = 0;
+
+                                if (jumpUpAndDownAfterObjective.time < jumpTime)
+                                {
+
+                                    jumpUpAndDownAfterObjective.entities[witnessIndex].GetComponent<Rigidbody2D>().velocity = -Vector2.up * jumpSpeed;
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+                                else
+                                {
+
+                                    jumpUpAndDownAfterObjective.state = ObjectiveContext.State.Five;
+                                    jumpUpAndDownAfterObjective.time = restartTime;
+
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                    jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                }
+
+                                break;
+
+                            case ObjectiveContext.State.Five:
+
+                                animationFrame = 0;
+
+                                jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteRenderer>().sprite =
+                                jumpUpAndDownAfterObjective.entities[0].GetComponent<SpriteLibrary>().GetSprite
+                                    (
+
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name,
+                                        jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentData>().information.name + "_" + (jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().lastFrameOffset + animationFrame)
+
+                                    );
+
+                                jumpUpAndDownAfterObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
+
+                                jumpUpAndDownAfterObjective.entities[witnessIndex].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+                                return true;
 
                         }
 

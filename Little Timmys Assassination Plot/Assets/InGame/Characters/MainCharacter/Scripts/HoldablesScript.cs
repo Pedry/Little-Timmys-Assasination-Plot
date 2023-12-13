@@ -62,6 +62,9 @@ public class HoldablesScript : MonoBehaviour
             collidingStudents[studentsInColliderIterator].GetComponentInChildren<StudentStateRules>().UpdateCollider();
             collidingStudents[studentsInColliderIterator].GetComponentInChildren<StudentVisionScript>().hasVision = false;
 
+            GameObject.Find("oMeter").GetComponent<oMeter>().angervalue = 9.9f;
+            GameObject.Find("oMeter").GetComponent<oMeter>().corpses.Add(collidingStudents[studentsInColliderIterator].GetComponentInChildren<StudentData>().gameObject);
+
             GameObject killedStudent = collidingStudents[studentsInColliderIterator];
 
             if (killedStudent.GetComponentInChildren<StudentVisionScript>().studentsInView.Keys.Count > 0)
@@ -273,8 +276,6 @@ public class HoldablesScript : MonoBehaviour
                                         jumpUpAndDownBeforeObjective.entities[0].GetComponent<StudentAnimation>().animationObjective = false;
 
                                         jumpUpAndDownBeforeObjective.entities[0].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-                                        Debug.Log(recordTime);
 
                                         return true;
 
